@@ -1069,9 +1069,90 @@ npm run db:reset
 
 ---
 
-*This document is confidential and intended for the FrameOne founding team. For the full technical specification, see `docs/ARCHITECTURE.md` in the repository.*
+## 22. AI Integration
+
+FrameOne integrates Claude AI (by Anthropic) directly into the platform. The AI handles five core functions: matching talent to jobs, understanding natural language searches, automatically categorizing member profiles, recommending crew from your network, and suggesting roles during signup. All of these work together to make the platform smarter than any job board or directory.
+
+### Feature 1: Smart Match
+
+When a Producer or Department Head posts a job requisition, they can click "Find Best Matches" and the AI analyzes every candidate in the system and ranks them by fit.
+
+The AI looks at the requisition requirements (role, location, dates, rate, description) and compares them against every matching profile in the database. It considers availability (are they free during the shoot dates?), location (are they near the production?), experience (how many past projects and endorsements do they have?), and bio relevance (does their described experience match what the production needs?). It returns a ranked list with a match score from 0 to 100 and a written explanation for each recommendation.
+
+Example: A Line Producer posts a requisition for a Gaffer in Atlanta, March 15 through April 30, at $650 per day. The AI scans all Gaffer profiles and returns something like: "Marcus Johnson, 95% match. Based in Atlanta, available March through May, 14 past projects, 8 endorsements from DPs. His bio mentions extensive experience with LED lighting on indie features, which aligns with this production's format."
+
+### Feature 2: Natural Language Search
+
+Instead of clicking through dropdown filters, users can type a search in plain English and the AI understands what they want.
+
+The user types something like "find me a DP in Atlanta who's available in March and has worked on horror films." The AI parses that sentence and extracts the structured information: role is Director of Photography, location is Atlanta, available dates are March 2026, and the keyword is horror. Then it runs that structured query against the database and returns matching profiles.
+
+Most people don't think in dropdown menus. They think in sentences. This makes the search feel like talking to an assistant rather than filling out a form. It also handles ambiguity. If someone types "camera guy in LA" the AI knows they mean Camera Operator in Los Angeles.
+
+### Feature 3: Auto-Categorization
+
+When a member writes their bio, the AI automatically extracts skills, genres, tools, and specialties and saves them as searchable tags on their profile.
+
+A Gaffer writes in their bio: "15 years lighting features and episodic television. Experienced with ARRI SkyPanels, LED walls, and DMX programming. Specialize in horror and thriller atmospherics." The AI reads that and extracts skills (LED lighting, DMX programming, atmospheric lighting), genres (horror, thriller), tools (ARRI SkyPanel, LED wall), and specialties (atmospheric lighting, episodic television). These get saved as structured tags that make the profile show up in relevant searches even if someone doesn't search for the exact words in the bio.
+
+Most professionals write bios in paragraph form. Without AI extraction, that information is locked in unstructured text and invisible to search. This makes every member's profile automatically more discoverable.
+
+### Feature 4: Crew Recommendations
+
+When a Producer or Department Head has a project with open positions, the AI looks at their professional network (people they have worked with on past projects) and recommends specific people for each open role.
+
+The AI pulls the user's entire worked-with history from the platform — every person they have been on a project with, what role each person had, and how many endorsements they have received. Then it looks at the open requisitions on the current project and matches network contacts to open positions. It prioritizes people whose role directly matches the open position, who have more endorsements (indicating they are trusted and reliable), and who the user has personally collaborated with before (lower hiring risk).
+
+This is how the industry actually works — people hire people they have worked with before. The AI just makes that process instant instead of requiring phone calls and text chains. It also surfaces connections the user might have forgotten about.
+
+### Feature 5: Role Suggestion During Onboarding
+
+When a new member signs up and goes through the onboarding wizard, they can describe what they do in their own words and the AI suggests which of the 43 platform roles they should select.
+
+The user types something like "I work in camera departments, mostly pulling focus and operating on commercials, but I also do some DIT work on smaller shoots." The AI reads that and suggests First Assistant Camera (high confidence, they mentioned pulling focus), Camera Operator (medium confidence, they mentioned operating), and Digital Imaging Technician (medium confidence, they mentioned DIT work).
+
+A new user looking at 43 roles across 9 departments can feel overwhelming. Not everyone knows the industry terminology, especially people earlier in their careers. This removes the friction from signup and makes sure people select the right roles so they show up in the right searches.
+
+### How the AI Connects to the Platform
+
+The AI is not a separate product. It is woven into the existing features:
+
+The Discover page uses natural language search so members can find talent by typing instead of clicking filters.
+
+The Requisition detail page has a "Find Best Matches" button that runs Smart Match and shows ranked candidates.
+
+The Project dashboard has a "Recommended Crew" section that pulls from the user's network using Crew Recommendations.
+
+The Profile edit page has an "Auto-tag my profile" button that runs Auto-Categorization on the bio.
+
+The Onboarding wizard has an optional "Describe what you do" text field that runs Role Suggestion before showing the department and role picker.
+
+### AI Cost Analysis
+
+The AI is powered by Claude Sonnet, which provides fast response times (under 3 seconds) with high accuracy. All AI responses are returned as structured data that the platform processes directly.
+
+At current API pricing, each AI call costs approximately $0.003 to $0.01. Even at 10,000 AI-assisted searches per month, the total cost would be under $100 per month. This is negligible compared to the platform's subscription revenue.
+
+The AI features are optional. If the API key is not configured, every other feature on the platform works normally. The AI is an enhancement layer, not a dependency.
+
+### Future AI Features (Phase 2 and 3)
+
+Script Breakdown AI: Upload a screenplay and the AI analyzes it to suggest what departments and roles you will need to staff, with estimated headcount per department.
+
+Schedule Optimization: AI suggests optimal shooting schedules based on crew availability windows and location constraints.
+
+Rate Intelligence: Anonymous benchmarking that tells users "the average rate for a Gaffer in Atlanta is $575 to $700 per day" based on aggregated platform data.
+
+Career Path AI: Suggests growth paths based on a member's current role and experience, like "based on your experience as a Key Grip with 8 projects, here is what it typically takes to move into a DP role."
+
+Portfolio Matching: Using AI embeddings to find professionals with similar styles, specialties, or experience even when they describe their work differently.
 
 ---
 
-**Prepared by Brandon Bible | March 9, 2026**
-**Built with Claude Opus 4.6**
+*This document is confidential and intended for the FrameOne founding team. For the full technical specification, see the ARCHITECTURE.md document in the repository.*
+
+---
+
+Prepared by Brandon Bible, Technical Lead
+March 9, 2026
+Built with Claude Opus 4.6
