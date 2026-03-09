@@ -21,7 +21,7 @@ export function Avatar({ src, name, size = "md", className }: AvatarProps) {
   return (
     <div
       className={cn(
-        "relative flex shrink-0 items-center justify-center rounded-full bg-zinc-700 font-medium text-zinc-300 overflow-hidden ring-2 ring-zinc-800",
+        "relative flex shrink-0 items-center justify-center rounded-full bg-navy-600 font-medium text-navy-100 overflow-hidden ring-2 ring-zinc-800",
         sizeClasses[size],
         className
       )}
@@ -45,7 +45,7 @@ export function AvatarStack({ users, max = 4 }: { users: Array<{ name: string; s
         <Avatar key={i} src={user.src} name={user.name} size="sm" className="ring-2 ring-zinc-900" />
       ))}
       {remaining > 0 && (
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-zinc-700 text-xs font-medium text-zinc-400 ring-2 ring-zinc-900">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-navy-600 text-xs font-medium text-navy-200 ring-2 ring-zinc-900">
           +{remaining}
         </div>
       )}

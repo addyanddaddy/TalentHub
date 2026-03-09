@@ -75,13 +75,13 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-950 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-navy-950 px-4">
       <div className="w-full max-w-sm space-y-8">
         <div className="flex flex-col items-center gap-4">
           <Image src="/logo.png" alt="FrameOne" width={64} height={64} className="rounded-xl" />
           <div className="text-center">
             <h1 className="text-2xl font-semibold text-white">Create your account</h1>
-            <p className="mt-1 text-sm text-zinc-400">Join the entertainment industry&apos;s professional network</p>
+            <p className="mt-1 text-sm text-navy-200">Join the entertainment industry&apos;s professional network</p>
           </div>
         </div>
 
@@ -138,9 +138,9 @@ export default function RegisterPage() {
           </Button>
         </form>
 
-        <p className="text-center text-sm text-zinc-400">
+        <p className="text-center text-sm text-navy-200">
           Already have an account?{" "}
-          <Link href="/auth/login" className="font-medium text-indigo-400 hover:text-indigo-300">
+          <Link href="/auth/login" className="font-medium text-accent hover:text-accent-light">
             Log in
           </Link>
         </p>

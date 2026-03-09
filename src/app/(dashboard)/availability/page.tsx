@@ -28,7 +28,7 @@ export default function AvailabilityPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Availability</h1>
-          <p className="text-sm text-zinc-400 mt-1">Manage your schedule so productions can find you when you are free.</p>
+          <p className="text-sm text-navy-200 mt-1">Manage your schedule so productions can find you when you are free.</p>
         </div>
         <Button className="gap-2" onClick={() => setShowForm(!showForm)}>
           <PlusIcon className="h-4 w-4" />
@@ -43,8 +43,8 @@ export default function AvailabilityPage() {
             <Input label="Start Date" type="date" />
             <Input label="End Date" type="date" />
             <div className="space-y-1.5">
-              <label className="block text-sm font-medium text-zinc-300">Status</label>
-              <select className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:border-indigo-500 focus:outline-none">
+              <label className="block text-sm font-medium text-navy-100">Status</label>
+              <select className="w-full rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none">
                 <option value="AVAILABLE">Available</option>
                 <option value="SOFT_HOLD">Soft Hold</option>
                 <option value="FIRM_HOLD">Firm Hold</option>
@@ -69,8 +69,8 @@ export default function AvailabilityPage() {
             <Card key={a.id} className="p-5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600/20">
-                    <CalendarDaysIcon className="h-5 w-5 text-indigo-400" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/20">
+                    <CalendarDaysIcon className="h-5 w-5 text-accent" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
@@ -80,7 +80,7 @@ export default function AvailabilityPage() {
                       <StatusDot status={info.dot} />
                       <Badge variant={a.status === "AVAILABLE" ? "success" : "warning"} size="sm">{info.label}</Badge>
                     </div>
-                    <p className="text-xs text-zinc-400 mt-0.5">{a.city}, {a.region}</p>
+                    <p className="text-xs text-navy-200 mt-0.5">{a.city}, {a.region}</p>
                   </div>
                 </div>
                 <Button variant="ghost" size="sm">Edit</Button>

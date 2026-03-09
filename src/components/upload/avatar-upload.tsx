@@ -59,13 +59,13 @@ export function AvatarUpload({ currentUrl, name, onUploadComplete, size = "xl" }
   return (
     <div className="relative group">
       <div className={cn(
-        "relative rounded-full overflow-hidden bg-zinc-700 flex items-center justify-center ring-4 ring-zinc-800",
+        "relative rounded-full overflow-hidden bg-navy-600 flex items-center justify-center ring-4 ring-zinc-800",
         sizeClasses[size],
       )}>
         {preview ? (
           <Image src={preview} alt={name} fill className="object-cover" />
         ) : (
-          <span className="font-semibold text-zinc-400 select-none">{getInitials(name)}</span>
+          <span className="font-semibold text-navy-200 select-none">{getInitials(name)}</span>
         )}
 
         {/* Hover overlay */}

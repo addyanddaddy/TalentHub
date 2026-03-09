@@ -26,7 +26,7 @@ export default function InvoicesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Invoices</h1>
-          <p className="text-sm text-zinc-400 mt-1">Submit and manage invoices for your services.</p>
+          <p className="text-sm text-navy-200 mt-1">Submit and manage invoices for your services.</p>
         </div>
         <Button className="gap-2">
           <PlusIcon className="h-4 w-4" />
@@ -35,10 +35,10 @@ export default function InvoicesPage() {
       </div>
 
       {sampleInvoices.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/30 p-16 text-center">
+        <div className="rounded-xl border border-dashed border-navy-700 bg-navy-900/30 p-16 text-center">
           <DocumentTextIcon className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-white mb-2">No invoices yet</h3>
-          <p className="text-sm text-zinc-500 mb-6">Create an invoice to bill a production for your services.</p>
+          <p className="text-sm text-navy-300 mb-6">Create an invoice to bill a production for your services.</p>
         </div>
       ) : (
         <div className="space-y-3">
@@ -50,8 +50,8 @@ export default function InvoicesPage() {
                     <h3 className="text-base font-semibold text-white">{inv.vendor}</h3>
                     <Badge variant={statusColors[inv.status] || "default"} size="sm">{inv.status}</Badge>
                   </div>
-                  <p className="text-sm text-indigo-400 mt-0.5">{inv.project}</p>
-                  <p className="text-xs text-zinc-500 mt-1">Submitted {inv.date}</p>
+                  <p className="text-sm text-accent mt-0.5">{inv.project}</p>
+                  <p className="text-xs text-navy-300 mt-1">Submitted {inv.date}</p>
                 </div>
                 <div className="text-right">
                   <p className="text-lg font-bold text-white">{inv.amount}</p>

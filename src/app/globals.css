@@ -3,28 +3,36 @@
 @tailwind utilities;
 
 :root {
-  --color-brand-indigo: #4f46e5;
+  --color-accent: #00E701;
+  --color-accent-light: #1FFF20;
+  --color-accent-dark: #00C301;
   --color-brand-gold: #f59e0b;
   --color-brand-silver: #94a3b8;
 }
 
-/* Dark scrollbar */
+/* Dark scrollbar — navy tones */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #0D1B25;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+  background: #2F4553;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #52525b;
+  background: #3D5564;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 231, 1, 0.2);
+  color: white;
 }
 
 /* Animations */
@@ -94,16 +102,21 @@
   background-clip: text;
 }
 
-.text-gradient-indigo {
-  background: linear-gradient(135deg, #818cf8, #6366f1, #818cf8);
+.text-gradient-green {
+  background: linear-gradient(135deg, #00E701, #1FFF20, #00D4AA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glass effect */
+/* Glass effect — navy tone */
 .glass {
-  background: rgba(24, 24, 27, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(63, 63, 70, 0.5);
+  background: rgba(13, 27, 37, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(47, 69, 83, 0.5);
+}
+
+/* Accent glow effect for buttons/cards */
+.glow-accent {
+  box-shadow: 0 0 20px rgba(0, 231, 1, 0.15), 0 0 40px rgba(0, 231, 1, 0.05);
 }

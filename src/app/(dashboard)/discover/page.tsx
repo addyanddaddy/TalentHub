@@ -25,25 +25,25 @@ export default function DiscoverPage() {
     <div className="space-y-6 animate-fade-in">
       <div>
         <h1 className="text-2xl font-bold text-white">Discover Talent & Crew</h1>
-        <p className="text-sm text-zinc-400 mt-1">Search across {TAXONOMY_GROUPS.length} departments and 40+ specialized roles.</p>
+        <p className="text-sm text-navy-200 mt-1">Search across {TAXONOMY_GROUPS.length} departments and 40+ specialized roles.</p>
       </div>
 
       {/* Search */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="flex-1 relative">
-          <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500" />
+          <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-navy-300" />
           <input
             type="text"
             placeholder="Search by name, role, or skill..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-800 pl-10 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 focus:outline-none"
+            className="w-full rounded-lg border border-navy-600 bg-navy-700 pl-10 pr-4 py-2.5 text-sm text-white placeholder-navy-300 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none"
           />
         </div>
         <select
           value={selectedDepartment}
           onChange={(e) => setSelectedDepartment(e.target.value)}
-          className="rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:border-indigo-500 focus:outline-none"
+          className="rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none"
         >
           <option value="">All Departments</option>
           {TAXONOMY_GROUPS.map((g) => (
@@ -67,8 +67,8 @@ export default function DiscoverPage() {
                   <h3 className="text-sm font-semibold text-white truncate">{person.name}</h3>
                   <StatusDot status={person.status} />
                 </div>
-                <p className="text-xs text-indigo-400 font-medium mt-0.5">{person.role}</p>
-                <p className="text-xs text-zinc-500 mt-0.5">{person.location}</p>
+                <p className="text-xs text-accent font-medium mt-0.5">{person.role}</p>
+                <p className="text-xs text-navy-300 mt-0.5">{person.location}</p>
               </div>
             </div>
             <div className="flex items-center gap-2 mt-4">

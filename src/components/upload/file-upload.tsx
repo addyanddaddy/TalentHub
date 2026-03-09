@@ -114,15 +114,15 @@ export function FileUpload({
 
   return (
     <div className={cn("space-y-1.5", className)}>
-      {label && <label className="block text-sm font-medium text-zinc-300">{label}</label>}
+      {label && <label className="block text-sm font-medium text-navy-100">{label}</label>}
 
       {uploaded && fileName ? (
-        <div className="flex items-center justify-between rounded-lg border border-zinc-700 bg-zinc-800/50 px-4 py-3">
+        <div className="flex items-center justify-between rounded-lg border border-navy-600 bg-navy-700/50 px-4 py-3">
           <div className="flex items-center gap-3">
             <CheckCircleIcon className="h-5 w-5 text-emerald-500" />
             <span className="text-sm text-white truncate max-w-[200px]">{fileName}</span>
           </div>
-          <button onClick={handleRemove} className="text-zinc-400 hover:text-white transition-colors">
+          <button onClick={handleRemove} className="text-navy-200 hover:text-white transition-colors">
             <XMarkIcon className="h-4 w-4" />
           </button>
         </div>
@@ -134,19 +134,19 @@ export function FileUpload({
           className={cn(
             "flex flex-col items-center justify-center rounded-lg border-2 border-dashed px-6 py-8 cursor-pointer transition-colors",
             dragOver
-              ? "border-indigo-500 bg-indigo-500/10"
-              : "border-zinc-700 bg-zinc-800/30 hover:border-zinc-600 hover:bg-zinc-800/50",
+              ? "border-accent bg-accent/10"
+              : "border-navy-600 bg-navy-700/30 hover:border-navy-500 hover:bg-navy-700/50",
             uploading && "pointer-events-none opacity-60"
           )}
         >
           {uploading ? (
-            <div className="animate-spin rounded-full h-8 w-8 border-2 border-indigo-500 border-t-transparent" />
+            <div className="animate-spin rounded-full h-8 w-8 border-2 border-accent border-t-transparent" />
           ) : (
             <>
-              <Icon className="h-8 w-8 text-zinc-500 mb-2" />
-              <p className="text-sm font-medium text-zinc-300">{config.label}</p>
-              <p className="text-xs text-zinc-500 mt-1">{description || config.description}</p>
-              <p className="text-xs text-indigo-400 mt-2">Click or drag and drop</p>
+              <Icon className="h-8 w-8 text-navy-300 mb-2" />
+              <p className="text-sm font-medium text-navy-100">{config.label}</p>
+              <p className="text-xs text-navy-300 mt-1">{description || config.description}</p>
+              <p className="text-xs text-accent mt-2">Click or drag and drop</p>
             </>
           )}
           <input

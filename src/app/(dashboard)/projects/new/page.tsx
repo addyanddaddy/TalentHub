@@ -59,7 +59,7 @@ export default function NewProjectPage() {
     <div className="space-y-6 animate-fade-in max-w-2xl">
       <div>
         <h1 className="text-2xl font-bold text-white">Create New Project</h1>
-        <p className="text-sm text-zinc-400 mt-1">Set up a new production and start building your team.</p>
+        <p className="text-sm text-navy-200 mt-1">Set up a new production and start building your team.</p>
       </div>
 
       <Card className="p-6">
@@ -81,11 +81,11 @@ export default function NewProjectPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="block text-sm font-medium text-zinc-300">Format</label>
+              <label className="block text-sm font-medium text-navy-100">Format</label>
               <select
                 value={form.format}
                 onChange={(e) => setForm({ ...form, format: e.target.value })}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none"
               >
                 {formats.map((f) => (
                   <option key={f.value} value={f.value}>{f.label}</option>
@@ -94,11 +94,11 @@ export default function NewProjectPage() {
             </div>
 
             <div className="space-y-1.5">
-              <label className="block text-sm font-medium text-zinc-300">Stage</label>
+              <label className="block text-sm font-medium text-navy-100">Stage</label>
               <select
                 value={form.stage}
                 onChange={(e) => setForm({ ...form, stage: e.target.value })}
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:border-indigo-500 focus:outline-none"
+                className="w-full rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none"
               >
                 {stages.map((s) => (
                   <option key={s.value} value={s.value}>{s.label}</option>
@@ -108,11 +108,11 @@ export default function NewProjectPage() {
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-sm font-medium text-zinc-300">Visibility</label>
+            <label className="block text-sm font-medium text-navy-100">Visibility</label>
             <select
               value={form.visibility}
               onChange={(e) => setForm({ ...form, visibility: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2.5 text-sm text-white focus:border-indigo-500 focus:outline-none"
+              className="w-full rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none"
             >
               <option value="PRIVATE">Private — Only team members</option>
               <option value="INVITE_ONLY">Invite Only — Visible to invited users</option>

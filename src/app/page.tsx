@@ -41,7 +41,7 @@ const stats = [
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-navy-950">
       {/* Nav */}
       <nav className="fixed top-0 inset-x-0 z-50 glass">
         <div className="mx-auto max-w-7xl flex items-center justify-between px-6 py-3">
@@ -50,12 +50,12 @@ export default function LandingPage() {
             <span className="text-lg font-bold text-white">FrameOne</span>
           </Link>
           <div className="flex items-center gap-4">
-            <Link href="/auth/login" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+            <Link href="/auth/login" className="text-sm font-medium text-navy-200 hover:text-white transition-colors">
               Log in
             </Link>
             <Link
               href="/auth/register"
-              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700 transition-colors"
+              className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white hover:bg-accent-dark transition-colors"
             >
               Get Started Free
             </Link>
@@ -66,16 +66,16 @@ export default function LandingPage() {
       {/* Hero */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         {/* Background gradient orbs */}
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
         <div className="absolute top-40 right-1/4 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/80 px-4 py-1.5 mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-navy-700 bg-navy-900/80 px-4 py-1.5 mb-6">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="text-xs font-medium text-zinc-400">Now in development — launching soon</span>
+            <span className="text-xs font-medium text-navy-200">Now in development — launching soon</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
@@ -84,7 +84,7 @@ export default function LandingPage() {
             <span className="text-gradient-gold">Industry&apos;s Network</span>
           </h1>
 
-          <p className="mt-6 text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-lg md:text-xl text-navy-200 max-w-2xl mx-auto leading-relaxed">
             Connect with talent, crew, and production professionals.
             Build teams. Create projects. Get hired.
             From producers to PAs — every role, one platform.
@@ -93,13 +93,13 @@ export default function LandingPage() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/auth/register"
-              className="rounded-xl bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white hover:bg-indigo-700 transition-all hover:shadow-lg hover:shadow-indigo-500/25"
+              className="rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-white hover:bg-accent-dark transition-all hover:shadow-lg hover:shadow-accent/25"
             >
               Get Started Free
             </Link>
             <a
               href="#features"
-              className="rounded-xl border border-zinc-800 px-8 py-3.5 text-base font-semibold text-zinc-300 hover:bg-zinc-800 transition-colors"
+              className="rounded-xl border border-navy-700 px-8 py-3.5 text-base font-semibold text-navy-100 hover:bg-navy-700 transition-colors"
             >
               Learn More
             </a>
@@ -108,10 +108,10 @@ export default function LandingPage() {
       </section>
 
       {/* Role ticker */}
-      <section className="py-8 border-y border-zinc-800/50 overflow-hidden">
+      <section className="py-8 border-y border-navy-700/50 overflow-hidden">
         <div className="flex gap-4 animate-[scroll_30s_linear_infinite]" style={{ width: "max-content" }}>
           {[...ROLES, ...ROLES].map((role, i) => (
-            <span key={`${role.slug}-${i}`} className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-4 py-1.5 text-sm text-zinc-400 whitespace-nowrap">
+            <span key={`${role.slug}-${i}`} className="inline-flex items-center gap-2 rounded-full border border-navy-700 bg-navy-900/50 px-4 py-1.5 text-sm text-navy-200 whitespace-nowrap">
               {role.name}
             </span>
           ))}
@@ -129,19 +129,19 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white">Built for How Productions Actually Work</h2>
-            <p className="mt-4 text-lg text-zinc-400 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-navy-200 max-w-2xl mx-auto">
               Not a generic job board. A platform that understands departments, authority chains, and the trust-based hiring that defines this industry.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children">
             {features.map((feature) => (
-              <div key={feature.title} className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 hover:border-zinc-700 transition-colors">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-indigo-600/20 text-indigo-400 mb-5">
+              <div key={feature.title} className="rounded-2xl border border-navy-700 bg-navy-900/50 p-8 hover:border-navy-600 transition-colors">
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent/20 text-accent mb-5">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
-                <p className="text-sm text-zinc-400 leading-relaxed">{feature.description}</p>
+                <p className="text-sm text-navy-200 leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -149,12 +149,12 @@ export default function LandingPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 px-6 border-y border-zinc-800/50">
+      <section className="py-16 px-6 border-y border-navy-700/50">
         <div className="mx-auto max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-gradient-gold">{stat.value}</p>
-              <p className="mt-1 text-sm text-zinc-400">{stat.label}</p>
+              <p className="mt-1 text-sm text-navy-200">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -165,19 +165,19 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white">Every Department. Every Role.</h2>
-            <p className="mt-4 text-zinc-400">{ROLES.length} specialized roles across {TAXONOMY_GROUPS.length} departments</p>
+            <p className="mt-4 text-navy-200">{ROLES.length} specialized roles across {TAXONOMY_GROUPS.length} departments</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {TAXONOMY_GROUPS.map((group) => {
               const groupRoles = ROLES.filter((r) => r.groupSlug === group.slug);
               return (
-                <div key={group.slug} className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+                <div key={group.slug} className="rounded-xl border border-navy-700 bg-navy-900/30 p-5">
                   <h3 className="font-semibold text-white mb-1">{group.name}</h3>
-                  <p className="text-xs text-zinc-500 mb-3">{group.description}</p>
+                  <p className="text-xs text-navy-300 mb-3">{group.description}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {groupRoles.map((role) => (
-                      <span key={role.slug} className="inline-block rounded-md bg-zinc-800 px-2 py-0.5 text-[11px] text-zinc-400">
+                      <span key={role.slug} className="inline-block rounded-md bg-navy-700 px-2 py-0.5 text-[11px] text-navy-200">
                         {role.name}
                       </span>
                     ))}
@@ -190,11 +190,11 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="py-24 px-6 bg-zinc-900/50">
+      <section id="pricing" className="py-24 px-6 bg-navy-900/50">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white">Simple, Transparent Pricing</h2>
-            <p className="mt-4 text-zinc-400">Start free. Upgrade as you grow.</p>
+            <p className="mt-4 text-navy-200">Start free. Upgrade as you grow.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
@@ -203,23 +203,23 @@ export default function LandingPage() {
                 key={plan.slug}
                 className={`rounded-xl border p-6 ${
                   plan.slug === "hiring-pro"
-                    ? "border-indigo-500 bg-indigo-600/10 ring-1 ring-indigo-500/20"
-                    : "border-zinc-800 bg-zinc-900/50"
+                    ? "border-accent bg-accent/10 ring-1 ring-accent/20"
+                    : "border-navy-700 bg-navy-900/50"
                 }`}
               >
                 {plan.slug === "hiring-pro" && (
-                  <span className="inline-block rounded-full bg-indigo-600 px-2.5 py-0.5 text-[10px] font-semibold text-white mb-3">
+                  <span className="inline-block rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-semibold text-white mb-3">
                     Most Popular
                   </span>
                 )}
                 <h3 className="text-base font-semibold text-white">{plan.name}</h3>
                 <div className="mt-2 mb-4">
                   <span className="text-2xl font-bold text-white">${plan.price}</span>
-                  {plan.price > 0 && <span className="text-sm text-zinc-400">/mo</span>}
+                  {plan.price > 0 && <span className="text-sm text-navy-200">/mo</span>}
                 </div>
                 <ul className="space-y-2 mb-6">
                   {plan.features.slice(0, 4).map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-xs text-zinc-400">
+                    <li key={f} className="flex items-start gap-2 text-xs text-navy-200">
                       <svg className="h-3.5 w-3.5 text-emerald-500 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                       </svg>
@@ -231,8 +231,8 @@ export default function LandingPage() {
                   href="/auth/register"
                   className={`block text-center rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
                     plan.slug === "hiring-pro"
-                      ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                      : "border border-zinc-700 text-zinc-300 hover:bg-zinc-800"
+                      ? "bg-accent text-white hover:bg-accent-dark"
+                      : "border border-navy-600 text-navy-100 hover:bg-navy-700"
                   }`}
                 >
                   {plan.price === 0 ? "Get Started" : "Start Trial"}
@@ -247,12 +247,12 @@ export default function LandingPage() {
       <section className="py-24 px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Join the Network?</h2>
-          <p className="mt-4 text-lg text-zinc-400">
+          <p className="mt-4 text-lg text-navy-200">
             Whether you&apos;re a producer staffing your next feature or a grip looking for your next gig — FrameOne connects you to the industry.
           </p>
           <Link
             href="/auth/register"
-            className="mt-8 inline-flex rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 px-10 py-4 text-lg font-semibold text-white hover:from-indigo-500 hover:to-indigo-400 transition-all hover:shadow-lg hover:shadow-indigo-500/25"
+            className="mt-8 inline-flex rounded-xl bg-gradient-to-r from-accent to-accent-dark px-10 py-4 text-lg font-semibold text-white hover:from-accent-light hover:to-accent transition-all hover:shadow-lg hover:shadow-accent/25"
           >
             Create Your Free Account
           </Link>
@@ -260,13 +260,13 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-zinc-800 py-12 px-6">
+      <footer className="border-t border-navy-700 py-12 px-6">
         <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <Image src="/logo.png" alt="FrameOne" width={24} height={24} className="rounded" />
-            <span className="text-sm text-zinc-500">&copy; 2026 FrameOne. All rights reserved.</span>
+            <span className="text-sm text-navy-300">&copy; 2026 FrameOne. All rights reserved.</span>
           </div>
-          <div className="flex gap-6 text-sm text-zinc-500">
+          <div className="flex gap-6 text-sm text-navy-300">
             <a href="#" className="hover:text-white transition-colors">Privacy</a>
             <a href="#" className="hover:text-white transition-colors">Terms</a>
             <a href="#" className="hover:text-white transition-colors">Contact</a>

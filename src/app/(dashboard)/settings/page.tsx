@@ -15,7 +15,7 @@ export default function SettingsPage() {
     <div className="space-y-6 animate-fade-in max-w-3xl">
       <div>
         <h1 className="text-2xl font-bold text-white">Settings</h1>
-        <p className="text-sm text-zinc-400 mt-1">Manage your account, billing, and preferences.</p>
+        <p className="text-sm text-navy-200 mt-1">Manage your account, billing, and preferences.</p>
       </div>
 
       {/* Account */}
@@ -25,7 +25,7 @@ export default function SettingsPage() {
           <Avatar name={session?.user?.name || "User"} size="lg" />
           <div>
             <p className="font-medium text-white">{session?.user?.name}</p>
-            <p className="text-sm text-zinc-400">{session?.user?.email}</p>
+            <p className="text-sm text-navy-200">{session?.user?.email}</p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -44,7 +44,7 @@ export default function SettingsPage() {
           <h2 className="text-base font-semibold text-white">Subscription</h2>
           <Badge variant="gold" size="md">{(session?.user as any)?.membershipTier || "FREE"}</Badge>
         </div>
-        <p className="text-sm text-zinc-400 mb-4">Your current plan determines what features you can access on the platform.</p>
+        <p className="text-sm text-navy-200 mb-4">Your current plan determines what features you can access on the platform.</p>
         <Button variant="outline" size="sm">Manage Subscription</Button>
       </Card>
 
@@ -67,7 +67,7 @@ export default function SettingsPage() {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm text-white">Sign Out</p>
-            <p className="text-xs text-zinc-500">Sign out of your account on this device.</p>
+            <p className="text-xs text-navy-300">Sign out of your account on this device.</p>
           </div>
           <Button variant="danger" size="sm" onClick={() => signOut({ callbackUrl: "/" })}>
             Sign Out

@@ -58,7 +58,7 @@ export function Sidebar({ user }: SidebarProps) {
 
   const NavSection = ({ label, items }: { label: string; items: typeof platformNav }) => (
     <div className="space-y-1">
-      <p className="px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500 mb-2">
+      <p className="px-3 text-[10px] font-semibold uppercase tracking-wider text-navy-300 mb-2">
         {label}
       </p>
       {items.map((item) => {
@@ -71,8 +71,8 @@ export function Sidebar({ user }: SidebarProps) {
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
               isActive
-                ? "bg-indigo-600/20 text-indigo-400"
-                : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
+                ? "bg-accent/20 text-accent"
+                : "text-navy-200 hover:bg-navy-700 hover:text-white"
             )}
           >
             <item.icon className="h-5 w-5 shrink-0" />
@@ -85,7 +85,7 @@ export function Sidebar({ user }: SidebarProps) {
 
   const sidebarContent = (
     <>
-      <div className="flex h-14 items-center gap-3 px-3 border-b border-zinc-800">
+      <div className="flex h-14 items-center gap-3 px-3 border-b border-navy-700">
         <Link href="/dashboard" className="flex items-center gap-2.5">
           <Image src="/logo.png" alt="FrameOne" width={32} height={32} className="rounded-md" />
           <span className="text-base font-semibold text-white">FrameOne</span>
@@ -98,14 +98,14 @@ export function Sidebar({ user }: SidebarProps) {
         <NavSection label="Finance" items={financeNav} />
       </nav>
 
-      <div className="border-t border-zinc-800 p-3 space-y-1">
+      <div className="border-t border-navy-700 p-3 space-y-1">
         <Link
           href="/settings"
           className={cn(
             "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
             pathname === "/settings"
-              ? "bg-indigo-600/20 text-indigo-400"
-              : "text-zinc-400 hover:bg-zinc-800 hover:text-white"
+              ? "bg-accent/20 text-accent"
+              : "text-navy-200 hover:bg-navy-700 hover:text-white"
           )}
         >
           <Cog6ToothIcon className="h-5 w-5" />
@@ -117,7 +117,7 @@ export function Sidebar({ user }: SidebarProps) {
             <Avatar name={user.name || "User"} src={user.image} size="sm" />
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-white truncate">{user.name}</p>
-              <p className="text-xs text-zinc-500 truncate">{user.email}</p>
+              <p className="text-xs text-navy-300 truncate">{user.email}</p>
             </div>
           </div>
         )}
@@ -130,7 +130,7 @@ export function Sidebar({ user }: SidebarProps) {
       {/* Mobile toggle */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
-        className="fixed top-3 left-3 z-50 rounded-lg bg-zinc-800 p-2 text-zinc-400 hover:text-white lg:hidden"
+        className="fixed top-3 left-3 z-50 rounded-lg bg-navy-700 p-2 text-navy-200 hover:text-white lg:hidden"
       >
         {mobileOpen ? <XMarkIcon className="h-5 w-5" /> : <Bars3Icon className="h-5 w-5" />}
       </button>
@@ -146,7 +146,7 @@ export function Sidebar({ user }: SidebarProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-zinc-800 bg-zinc-900",
+          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-navy-700 bg-navy-900",
           "transition-transform duration-200 lg:translate-x-0 lg:static",
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         )}

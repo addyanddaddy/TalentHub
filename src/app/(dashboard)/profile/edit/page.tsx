@@ -28,7 +28,7 @@ export default function ProfileEditPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-indigo-500 border-t-transparent" />
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-accent border-t-transparent" />
       </div>
     );
   }
@@ -37,7 +37,7 @@ export default function ProfileEditPage() {
     <div className="space-y-6 animate-fade-in">
       <div>
         <h1 className="text-2xl font-bold text-white">My Profiles</h1>
-        <p className="text-sm text-zinc-400 mt-1">Manage your professional profiles across different roles.</p>
+        <p className="text-sm text-navy-200 mt-1">Manage your professional profiles across different roles.</p>
       </div>
 
       {/* User info card with avatar upload */}
@@ -57,7 +57,7 @@ export default function ProfileEditPage() {
           />
           <div>
             <h2 className="text-xl font-semibold text-white">{session?.user?.name}</h2>
-            <p className="text-sm text-zinc-400">{session?.user?.email}</p>
+            <p className="text-sm text-navy-200">{session?.user?.email}</p>
             <div className="flex gap-2 mt-2">
               {profiles.map((p: any) => (
                 <Badge key={p.id} variant="primary" size="sm">{p.role?.name}</Badge>
@@ -69,10 +69,10 @@ export default function ProfileEditPage() {
 
       {/* Role profiles */}
       {profiles.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-800 bg-zinc-900/30 p-16 text-center">
+        <div className="rounded-xl border border-dashed border-navy-700 bg-navy-900/30 p-16 text-center">
           <UserCircleIcon className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-white mb-2">No role profiles yet</h3>
-          <p className="text-sm text-zinc-500 mb-6">Complete your onboarding to set up your professional profiles.</p>
+          <p className="text-sm text-navy-300 mb-6">Complete your onboarding to set up your professional profiles.</p>
           <Button onClick={() => window.location.href = "/onboarding"}>Complete Onboarding</Button>
         </div>
       ) : (
@@ -85,7 +85,7 @@ export default function ProfileEditPage() {
                   <Badge variant="gold" size="sm">{profile.role?.level}</Badge>
                   <Badge variant="default" size="sm">{profile.role?.taxonomyGroup?.name}</Badge>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-zinc-400">
+                <div className="flex items-center gap-2 text-sm text-navy-200">
                   <span>{profile._count?.projectAssignments || 0} credits</span>
                   <span>•</span>
                   <span>{profile._count?.receivedEndorsements || 0} endorsements</span>
@@ -104,7 +104,7 @@ export default function ProfileEditPage() {
               </div>
 
               {/* Media uploads */}
-              <div className="mt-6 border-t border-zinc-800 pt-6">
+              <div className="mt-6 border-t border-navy-700 pt-6">
                 <h4 className="text-sm font-semibold text-white mb-4">Media & Documents</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <FileUpload

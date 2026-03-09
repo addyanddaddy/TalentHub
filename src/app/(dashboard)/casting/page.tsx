@@ -20,7 +20,7 @@ export default function CastingPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Casting</h1>
-          <p className="text-sm text-zinc-400 mt-1">Manage casting breakdowns, submissions, and auditions.</p>
+          <p className="text-sm text-navy-200 mt-1">Manage casting breakdowns, submissions, and auditions.</p>
         </div>
         <Button className="gap-2">
           <PlusIcon className="h-4 w-4" />
@@ -28,13 +28,13 @@ export default function CastingPage() {
         </Button>
       </div>
 
-      <div className="flex gap-1 rounded-lg bg-zinc-900/50 p-1 border border-zinc-800 w-fit">
+      <div className="flex gap-1 rounded-lg bg-navy-900/50 p-1 border border-navy-700 w-fit">
         {["breakdowns", "my-submissions", "auditions"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`rounded-md px-3 py-1.5 text-sm font-medium capitalize transition-colors ${
-              activeTab === tab ? "bg-zinc-800 text-white" : "text-zinc-400 hover:text-white"
+              activeTab === tab ? "bg-navy-700 text-white" : "text-navy-200 hover:text-white"
             }`}
           >
             {tab.replace("-", " ")}
@@ -51,19 +51,19 @@ export default function CastingPage() {
                   <h3 className="text-lg font-semibold text-white">{b.roleName}</h3>
                   <Badge variant="success" size="sm">{b.status}</Badge>
                 </div>
-                <p className="text-sm text-indigo-400 mt-1">{b.project}</p>
-                <div className="flex items-center gap-4 mt-3 text-sm text-zinc-400">
+                <p className="text-sm text-accent mt-1">{b.project}</p>
+                <div className="flex items-center gap-4 mt-3 text-sm text-navy-200">
                   <span>Age: {b.ageRange}</span>
                   <span>Gender: {b.gender}</span>
                   <span>{b.compensation}</span>
                 </div>
               </div>
               <div className="text-right space-y-2">
-                <div className="flex items-center gap-1.5 text-sm text-zinc-400">
+                <div className="flex items-center gap-1.5 text-sm text-navy-200">
                   <UserGroupIcon className="h-4 w-4" />
                   {b.submissions} submissions
                 </div>
-                <div className="flex items-center gap-1.5 text-sm text-zinc-400">
+                <div className="flex items-center gap-1.5 text-sm text-navy-200">
                   <ClockIcon className="h-4 w-4" />
                   Due {b.deadline}
                 </div>

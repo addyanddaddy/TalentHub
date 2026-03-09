@@ -100,14 +100,14 @@ export default function OnboardingPage() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-zinc-950">
-        <div className="animate-spin rounded-full h-8 w-8 border-2 border-indigo-500 border-t-transparent" />
+      <div className="min-h-screen flex items-center justify-center bg-navy-950">
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-accent border-t-transparent" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 py-8 px-4">
+    <div className="min-h-screen bg-navy-950 py-8 px-4">
       <div className="mx-auto max-w-4xl">
         {/* Logo */}
         <div className="flex justify-center mb-8">
@@ -125,18 +125,18 @@ export default function OnboardingPage() {
                       currentStep > step.num
                         ? "bg-emerald-500 text-white"
                         : currentStep === step.num
-                        ? "bg-indigo-600 text-white"
-                        : "bg-zinc-800 text-zinc-500"
+                        ? "bg-accent text-white"
+                        : "bg-navy-700 text-navy-300"
                     }`}
                   >
                     {currentStep > step.num ? <CheckIcon className="h-5 w-5" /> : step.num}
                   </div>
-                  <p className={`mt-2 text-xs font-medium ${currentStep >= step.num ? "text-white" : "text-zinc-500"}`}>
+                  <p className={`mt-2 text-xs font-medium ${currentStep >= step.num ? "text-white" : "text-navy-300"}`}>
                     {step.label}
                   </p>
                 </div>
                 {i < steps.length - 1 && (
-                  <div className={`flex-1 h-0.5 mx-3 mt-[-20px] ${currentStep > step.num ? "bg-emerald-500" : "bg-zinc-800"}`} />
+                  <div className={`flex-1 h-0.5 mx-3 mt-[-20px] ${currentStep > step.num ? "bg-emerald-500" : "bg-navy-700"}`} />
                 )}
               </div>
             ))}
@@ -148,7 +148,7 @@ export default function OnboardingPage() {
           <div className="space-y-6">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold text-white">Choose Your Roles</h1>
-              <p className="mt-2 text-zinc-400">Select one or more roles that describe what you do. You can always add more later.</p>
+              <p className="mt-2 text-navy-200">Select one or more roles that describe what you do. You can always add more later.</p>
               {selectedRoles.length > 0 && (
                 <div className="mt-4 flex items-center justify-center gap-2 flex-wrap">
                   <Badge variant="primary" size="md">{selectedRoles.length} role{selectedRoles.length !== 1 ? "s" : ""} selected</Badge>
@@ -161,14 +161,14 @@ export default function OnboardingPage() {
 
             <div className="space-y-3">
               {groupedRoles.map((group) => (
-                <div key={group.slug} className="rounded-xl border border-zinc-800 bg-zinc-900/50 overflow-hidden">
+                <div key={group.slug} className="rounded-xl border border-navy-700 bg-navy-900/50 overflow-hidden">
                   <button
                     onClick={() => toggleGroup(group.slug)}
-                    className="flex w-full items-center justify-between p-4 text-left hover:bg-zinc-800/50 transition-colors"
+                    className="flex w-full items-center justify-between p-4 text-left hover:bg-navy-700/50 transition-colors"
                   >
                     <div>
                       <h3 className="text-base font-semibold text-white">{group.name}</h3>
-                      <p className="text-xs text-zinc-500 mt-0.5">{group.description}</p>
+                      <p className="text-xs text-navy-300 mt-0.5">{group.description}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       {group.roles.filter((r) => selectedRoles.find((s) => s.slug === r.slug)).length > 0 && (
@@ -177,9 +177,9 @@ export default function OnboardingPage() {
                         </Badge>
                       )}
                       {expandedGroups.has(group.slug) ? (
-                        <ChevronUpIcon className="h-5 w-5 text-zinc-400" />
+                        <ChevronUpIcon className="h-5 w-5 text-navy-200" />
                       ) : (
-                        <ChevronDownIcon className="h-5 w-5 text-zinc-400" />
+                        <ChevronDownIcon className="h-5 w-5 text-navy-200" />
                       )}
                     </div>
                   </button>
@@ -201,9 +201,9 @@ export default function OnboardingPage() {
                                 {role.level}
                               </Badge>
                             </div>
-                            <p className="mt-1.5 text-xs text-zinc-400 line-clamp-2">{role.description}</p>
+                            <p className="mt-1.5 text-xs text-navy-200 line-clamp-2">{role.description}</p>
                             {isSelected && (
-                              <div className="mt-2 flex items-center gap-1 text-xs text-indigo-400">
+                              <div className="mt-2 flex items-center gap-1 text-xs text-accent">
                                 <CheckIcon className="h-3.5 w-3.5" />
                                 Selected
                               </div>
@@ -230,12 +230,12 @@ export default function OnboardingPage() {
           <div className="space-y-6">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold text-white">Build Your Profiles</h1>
-              <p className="mt-2 text-zinc-400">Set up a profile for each of your selected roles.</p>
+              <p className="mt-2 text-navy-200">Set up a profile for each of your selected roles.</p>
             </div>
 
             <div className="space-y-4">
               {selectedRoles.map((role) => (
-                <div key={role.slug} className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6">
+                <div key={role.slug} className="rounded-xl border border-navy-700 bg-navy-900/50 p-6">
                   <div className="flex items-center gap-3 mb-4">
                     <Badge variant={levelColors[role.level] || "default"} size="md">{role.level}</Badge>
                     <h3 className="text-lg font-semibold text-white">{role.name}</h3>
@@ -291,7 +291,7 @@ export default function OnboardingPage() {
           <div className="space-y-6">
             <div className="text-center mb-8">
               <h1 className="text-3xl font-bold text-white">Choose Your Plan</h1>
-              <p className="mt-2 text-zinc-400">Start free and upgrade anytime as your needs grow.</p>
+              <p className="mt-2 text-navy-200">Start free and upgrade anytime as your needs grow.</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -313,18 +313,18 @@ export default function OnboardingPage() {
                     <h3 className="text-lg font-semibold text-white">{plan.name}</h3>
                     <div className="mt-2">
                       <span className="text-3xl font-bold text-white">${plan.price}</span>
-                      {plan.price > 0 && <span className="text-sm text-zinc-400">/mo</span>}
+                      {plan.price > 0 && <span className="text-sm text-navy-200">/mo</span>}
                     </div>
                     <ul className="mt-4 space-y-2">
                       {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-2 text-sm text-zinc-400">
+                        <li key={feature} className="flex items-center gap-2 text-sm text-navy-200">
                           <CheckIcon className="h-4 w-4 text-emerald-500 shrink-0" />
                           {feature}
                         </li>
                       ))}
                     </ul>
                     {isSelected && (
-                      <div className="mt-4 flex items-center justify-center gap-1 text-sm text-indigo-400 font-medium">
+                      <div className="mt-4 flex items-center justify-center gap-1 text-sm text-accent font-medium">
                         <CheckIcon className="h-4 w-4" />
                         Selected
                       </div>
@@ -353,21 +353,21 @@ export default function OnboardingPage() {
             </div>
             <div>
               <h1 className="text-3xl font-bold text-white">Welcome to FrameOne!</h1>
-              <p className="mt-2 text-zinc-400">Your profiles are set up and you&apos;re ready to go.</p>
+              <p className="mt-2 text-navy-200">Your profiles are set up and you&apos;re ready to go.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
               <Card variant="interactive" className="p-4 text-center" onClick={() => router.push("/profile/edit")}>
                 <h3 className="text-sm font-semibold text-white">Complete Profile</h3>
-                <p className="text-xs text-zinc-400 mt-1">Add your reel, headshots & credits</p>
+                <p className="text-xs text-navy-200 mt-1">Add your reel, headshots & credits</p>
               </Card>
               <Card variant="interactive" className="p-4 text-center" onClick={() => router.push("/projects")}>
                 <h3 className="text-sm font-semibold text-white">Browse Projects</h3>
-                <p className="text-xs text-zinc-400 mt-1">Find productions hiring now</p>
+                <p className="text-xs text-navy-200 mt-1">Find productions hiring now</p>
               </Card>
               <Card variant="interactive" className="p-4 text-center" onClick={() => router.push("/discover")}>
                 <h3 className="text-sm font-semibold text-white">Search Talent</h3>
-                <p className="text-xs text-zinc-400 mt-1">Discover crew & professionals</p>
+                <p className="text-xs text-navy-200 mt-1">Discover crew & professionals</p>
               </Card>
             </div>
 
