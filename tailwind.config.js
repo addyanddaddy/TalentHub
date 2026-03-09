@@ -9,18 +9,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Dark charcoal palette based on #222526
+        // Light silver palette — #AEB6BF background, #222526 text
         navy: {
-          950: "#222526",
-          900: "#2A2D2E",
-          800: "#333637",
-          700: "#3D4041",
-          600: "#4A4D4E",
-          500: "#5A5D5E",
-          400: "#6E7172",
-          300: "#8A8D8E",
-          200: "#A8ABAC",
-          100: "#C8CBCC",
+          950: "#AEB6BF",
+          900: "#9EA6AF",
+          800: "#C0C7CF",
+          700: "#D0D6DC",
+          600: "#DFE4E8",
+          500: "#8A929B",
+          400: "#6B737C",
+          300: "#4D555E",
+          200: "#363E47",
+          100: "#222526",
         },
         accent: {
           DEFAULT: "#6366F1",

@@ -8,6 +8,26 @@
   --color-accent-dark: #4F46E5;
   --color-brand-gold: #f59e0b;
   --color-brand-silver: #94a3b8;
+  --color-page-bg: #AEB6BF;
+  --color-page-text: #222526;
+  --color-surface-glass: rgba(239, 242, 245, 0.82);
+  --color-surface-glass-border: rgba(34, 37, 38, 0.12);
+  --color-shadow-soft: rgba(54, 62, 71, 0.14);
+}
+
+body {
+  background-color: var(--color-page-bg);
+  color: var(--color-page-text);
+}
+
+@layer utilities {
+  .bg-navy-950 {
+    background-color: var(--color-page-bg);
+  }
+
+  .text-white {
+    color: var(--color-page-text);
+  }
 }
 
 /* Dark scrollbar */
@@ -17,22 +37,22 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #222526;
+  background: #c8d0d8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4A4D4E;
+  background: #8a929b;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5A5D5E;
+  background: #6b737c;
 }
 
 /* Selection */
 ::selection {
   background: rgba(99, 102, 241, 0.25);
-  color: white;
+  color: #222526;
 }
 
 /* Animations */
@@ -111,9 +131,10 @@
 
 /* Glass effect */
 .glass {
-  background: rgba(34, 37, 38, 0.85);
+  background: linear-gradient(135deg, rgba(239, 242, 245, 0.88), rgba(223, 228, 232, 0.76));
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(74, 77, 78, 0.5);
+  border: 1px solid var(--color-surface-glass-border);
+  box-shadow: 0 20px 50px var(--color-shadow-soft);
 }
 
 /* Accent glow effect for buttons/cards */
