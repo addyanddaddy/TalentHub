@@ -12,10 +12,10 @@ import {
 } from "@heroicons/react/24/outline";
 
 const statCards = [
-  { label: "Active Projects", value: "—", icon: FilmIcon, color: "text-accent bg-indigo-400/10" },
+  { label: "Active Projects", value: "—", icon: FilmIcon, color: "text-accent bg-accent/15" },
   { label: "Open Applications", value: "—", icon: BriefcaseIcon, color: "text-amber-400 bg-amber-400/10" },
   { label: "Profile Views", value: "—", icon: ArrowTrendingUpIcon, color: "text-emerald-400 bg-emerald-400/10" },
-  { label: "Endorsements", value: "—", icon: HandThumbUpIcon, color: "text-purple-400 bg-purple-400/10" },
+  { label: "Endorsements", value: "—", icon: HandThumbUpIcon, color: "text-sky-300 bg-sky-400/10" },
 ];
 
 const quickActions = [
@@ -34,7 +34,7 @@ export default async function DashboardPage() {
     <div className="space-y-8 animate-fade-in">
       {/* Welcome */}
       <div>
-        <h1 className="text-2xl font-bold text-white">Welcome back, {userName}</h1>
+        <h1 className="text-2xl font-bold text-navy-100">Welcome back, {userName}</h1>
         <p className="text-sm text-navy-200 mt-1">Here&apos;s what&apos;s happening across your productions.</p>
         {roles.length > 0 && (
           <div className="flex gap-2 mt-3 flex-wrap">
@@ -65,7 +65,7 @@ export default async function DashboardPage() {
 
       {/* Quick Actions */}
       <div>
-        <h2 className="text-lg font-semibold text-white mb-4">Quick Actions</h2>
+        <h2 className="text-lg font-semibold text-navy-100 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
           {quickActions.map((action) => (
             <Link
@@ -83,7 +83,7 @@ export default async function DashboardPage() {
 
       {/* Recent Activity */}
       <div>
-        <h2 className="text-lg font-semibold text-white mb-4">Recent Activity</h2>
+        <h2 className="text-lg font-semibold text-navy-100 mb-4">Recent Activity</h2>
         <div className="rounded-xl border border-navy-700 bg-navy-900/50 p-8 text-center">
           <p className="text-sm text-navy-300">No recent activity yet. Start by completing your profile or browsing projects.</p>
         </div>

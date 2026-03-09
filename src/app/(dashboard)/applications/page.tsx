@@ -24,7 +24,7 @@ export default function ApplicationsPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-2xl font-bold text-white">My Applications</h1>
+        <h1 className="text-2xl font-bold text-navy-100">My Applications</h1>
         <p className="text-sm text-navy-200 mt-1">Track your job applications and their status.</p>
       </div>
 

@@ -14,7 +14,7 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6 animate-fade-in max-w-3xl">
       <div>
-        <h1 className="text-2xl font-bold text-white">Settings</h1>
+        <h1 className="text-2xl font-bold text-navy-100">Settings</h1>
         <p className="text-sm text-navy-200 mt-1">Manage your account, billing, and preferences.</p>
       </div>
 

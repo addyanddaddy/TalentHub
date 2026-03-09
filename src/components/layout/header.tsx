@@ -49,7 +49,7 @@ export function Header({ title, user }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b border-navy-700 bg-navy-950/80 backdrop-blur-md px-4 lg:px-8">
+    <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b border-navy-700 bg-navy-900/90 backdrop-blur-md px-4 lg:px-8">
       <h1 className="text-lg font-semibold text-white pl-10 lg:pl-0">{title}</h1>
 
       <div className="flex items-center gap-3">

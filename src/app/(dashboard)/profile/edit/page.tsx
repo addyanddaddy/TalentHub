@@ -36,7 +36,7 @@ export default function ProfileEditPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-2xl font-bold text-white">My Profiles</h1>
+        <h1 className="text-2xl font-bold text-navy-100">My Profiles</h1>
         <p className="text-sm text-navy-200 mt-1">Manage your professional profiles across different roles.</p>
       </div>
 

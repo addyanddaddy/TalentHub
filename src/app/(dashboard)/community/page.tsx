@@ -148,7 +148,7 @@ export default function CommunityPage() {
   return (
     <div className="space-y-6 animate-fade-in max-w-2xl mx-auto">
       <div>
-        <h1 className="text-2xl font-bold text-white">Community</h1>
+        <h1 className="text-2xl font-bold text-navy-100">Community</h1>
         <p className="text-sm text-navy-200 mt-1">News, updates, and conversations from the FrameOne network.</p>
       </div>
 

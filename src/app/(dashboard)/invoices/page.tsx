@@ -25,7 +25,7 @@ export default function InvoicesPage() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Invoices</h1>
+          <h1 className="text-2xl font-bold text-navy-100">Invoices</h1>
           <p className="text-sm text-navy-200 mt-1">Submit and manage invoices for your services.</p>
         </div>
         <Button className="gap-2">

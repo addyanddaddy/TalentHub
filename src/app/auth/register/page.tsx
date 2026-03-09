@@ -80,7 +80,7 @@ export default function RegisterPage() {
         <div className="flex flex-col items-center gap-4">
           <Image src="/logo.png" alt="FrameOne" width={64} height={64} className="rounded-xl" />
           <div className="text-center">
-            <h1 className="text-2xl font-semibold text-white">Create your account</h1>
+            <h1 className="text-2xl font-semibold text-navy-100">Create your account</h1>
             <p className="mt-1 text-sm text-navy-200">Join the entertainment industry&apos;s professional network</p>
           </div>
         </div>

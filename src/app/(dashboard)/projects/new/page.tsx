@@ -58,7 +58,7 @@ export default function NewProjectPage() {
   return (
     <div className="space-y-6 animate-fade-in max-w-2xl">
       <div>
-        <h1 className="text-2xl font-bold text-white">Create New Project</h1>
+        <h1 className="text-2xl font-bold text-navy-100">Create New Project</h1>
         <p className="text-sm text-navy-200 mt-1">Set up a new production and start building your team.</p>
       </div>
 

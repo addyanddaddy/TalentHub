@@ -16,7 +16,7 @@ export default function PaymentsPage() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Payments</h1>
+          <h1 className="text-2xl font-bold text-navy-100">Payments</h1>
           <p className="text-sm text-navy-200 mt-1">Track earnings, payouts, and subscription billing.</p>
         </div>
         <Button variant="outline" className="gap-2">
@@ -44,7 +44,7 @@ export default function PaymentsPage() {
       </div>
 
       <div>
-        <h2 className="text-lg font-semibold text-white mb-4">Recent Transactions</h2>
+        <h2 className="text-lg font-semibold text-navy-100 mb-4">Recent Transactions</h2>
         <div className="space-y-2">
           {sampleTransactions.map((tx) => (
             <Card key={tx.id} className="p-4">

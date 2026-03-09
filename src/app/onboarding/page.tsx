@@ -131,7 +131,7 @@ export default function OnboardingPage() {
                   >
                     {currentStep > step.num ? <CheckIcon className="h-5 w-5" /> : step.num}
                   </div>
-                  <p className={`mt-2 text-xs font-medium ${currentStep >= step.num ? "text-white" : "text-navy-300"}`}>
+                  <p className={`mt-2 text-xs font-medium ${currentStep >= step.num ? "text-navy-100" : "text-navy-300"}`}>
                     {step.label}
                   </p>
                 </div>
@@ -147,7 +147,7 @@ export default function OnboardingPage() {
         {currentStep === 1 && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-white">Choose Your Roles</h1>
+              <h1 className="text-3xl font-bold text-navy-100">Choose Your Roles</h1>
               <p className="mt-2 text-navy-200">Select one or more roles that describe what you do. You can always add more later.</p>
               {selectedRoles.length > 0 && (
                 <div className="mt-4 flex items-center justify-center gap-2 flex-wrap">
@@ -229,7 +229,7 @@ export default function OnboardingPage() {
         {currentStep === 2 && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-white">Build Your Profiles</h1>
+              <h1 className="text-3xl font-bold text-navy-100">Build Your Profiles</h1>
               <p className="mt-2 text-navy-200">Set up a profile for each of your selected roles.</p>
             </div>
 
@@ -290,7 +290,7 @@ export default function OnboardingPage() {
         {currentStep === 3 && (
           <div className="space-y-6">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-white">Choose Your Plan</h1>
+              <h1 className="text-3xl font-bold text-navy-100">Choose Your Plan</h1>
               <p className="mt-2 text-navy-200">Start free and upgrade anytime as your needs grow.</p>
             </div>
 
@@ -352,7 +352,7 @@ export default function OnboardingPage() {
               </div>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-white">Welcome to FrameOne!</h1>
+              <h1 className="text-3xl font-bold text-navy-100">Welcome to FrameOne!</h1>
               <p className="mt-2 text-navy-200">Your profiles are set up and you&apos;re ready to go.</p>
             </div>
 

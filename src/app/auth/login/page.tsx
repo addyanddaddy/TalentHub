@@ -46,7 +46,7 @@ export default function LoginPage() {
         <div className="flex flex-col items-center gap-4">
           <Image src="/logo.png" alt="FrameOne" width={64} height={64} className="rounded-xl" />
           <div className="text-center">
-            <h1 className="text-2xl font-semibold text-white">Log in to your account</h1>
+            <h1 className="text-2xl font-semibold text-navy-100">Log in to your account</h1>
             <p className="mt-1 text-sm text-navy-200">Enter your email and password below</p>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function LoginPage() {
           </div>
 
           <label className="flex items-center gap-2 text-sm text-navy-200">
-            <input type="checkbox" className="rounded border-navy-500 bg-navy-700 text-indigo-600 focus:ring-accent" />
+            <input type="checkbox" className="rounded border-navy-500 bg-navy-700 text-accent focus:ring-accent" />
             Remember me
           </label>
 

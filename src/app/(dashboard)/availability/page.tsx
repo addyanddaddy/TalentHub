@@ -27,7 +27,7 @@ export default function AvailabilityPage() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Availability</h1>
+          <h1 className="text-2xl font-bold text-navy-100">Availability</h1>
           <p className="text-sm text-navy-200 mt-1">Manage your schedule so productions can find you when you are free.</p>
         </div>
         <Button className="gap-2" onClick={() => setShowForm(!showForm)}>

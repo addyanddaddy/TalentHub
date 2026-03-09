@@ -24,7 +24,7 @@ export default function DiscoverPage() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-2xl font-bold text-white">Discover Talent & Crew</h1>
+        <h1 className="text-2xl font-bold text-navy-100">Discover Talent & Crew</h1>
         <p className="text-sm text-navy-200 mt-1">Search across {TAXONOMY_GROUPS.length} departments and 40+ specialized roles.</p>
       </div>
 

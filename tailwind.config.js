@@ -9,24 +9,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Light silver palette — #AEB6BF background, #222526 text
+        // Slate + steel blue palette — #AEB6BF background, #1B62B3 surfaces, #222526 base text
         navy: {
           950: "#AEB6BF",
-          900: "#9EA6AF",
-          800: "#C0C7CF",
-          700: "#D0D6DC",
-          600: "#DFE4E8",
-          500: "#8A929B",
-          400: "#6B737C",
-          300: "#4D555E",
-          200: "#363E47",
+          900: "#1B62B3",
+          800: "#17569E",
+          700: "#124681",
+          600: "#0E3766",
+          500: "#092A4D",
+          400: "#72869B",
+          300: "#5A6A79",
+          200: "#3F4D59",
           100: "#222526",
         },
         accent: {
-          DEFAULT: "#6366F1",
-          light: "#818CF8",
-          dark: "#4F46E5",
-          glow: "rgba(99, 102, 241, 0.15)",
+          DEFAULT: "#B57A1C",
+          light: "#CF9841",
+          dark: "#8F5F15",
+          glow: "rgba(181, 122, 28, 0.18)",
         },
         brand: {
           gold: "#F59E0B",

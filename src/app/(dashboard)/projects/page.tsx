@@ -14,7 +14,7 @@ export default function ProjectsPage() {
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Projects</h1>
+          <h1 className="text-2xl font-bold text-navy-100">Projects</h1>
           <p className="text-sm text-navy-200 mt-1">Manage your productions and crew.</p>
         </div>
         <Button className="gap-2">

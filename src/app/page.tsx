@@ -50,7 +50,7 @@ export default function LandingPage() {
             <span className="text-lg font-bold text-white">FrameOne</span>
           </Link>
           <div className="flex items-center gap-4">
-            <Link href="/auth/login" className="text-sm font-medium text-navy-200 hover:text-white transition-colors">
+            <Link href="/auth/login" className="text-sm font-medium text-navy-200 hover:text-accent transition-colors">
               Log in
             </Link>
             <Link
@@ -79,7 +79,7 @@ export default function LandingPage() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            <span className="text-white">The Entertainment</span>
+            <span className="text-navy-100">The Entertainment</span>
             <br />
             <span className="text-gradient-gold">Industry&apos;s Network</span>
           </h1>
@@ -128,7 +128,7 @@ export default function LandingPage() {
       <section id="features" className="py-24 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Built for How Productions Actually Work</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy-100">Built for How Productions Actually Work</h2>
             <p className="mt-4 text-lg text-navy-200 max-w-2xl mx-auto">
               Not a generic job board. A platform that understands departments, authority chains, and the trust-based hiring that defines this industry.
             </p>
@@ -164,7 +164,7 @@ export default function LandingPage() {
       <section className="py-24 px-6">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Every Department. Every Role.</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy-100">Every Department. Every Role.</h2>
             <p className="mt-4 text-navy-200">{ROLES.length} specialized roles across {TAXONOMY_GROUPS.length} departments</p>
           </div>
 
@@ -246,7 +246,7 @@ export default function LandingPage() {
       {/* CTA */}
       <section className="py-24 px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Join the Network?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-navy-100">Ready to Join the Network?</h2>
           <p className="mt-4 text-lg text-navy-200">
             Whether you&apos;re a producer staffing your next feature or a grip looking for your next gig — FrameOne connects you to the industry.
           </p>
@@ -267,9 +267,9 @@ export default function LandingPage() {
             <span className="text-sm text-navy-300">&copy; 2026 FrameOne. All rights reserved.</span>
           </div>
           <div className="flex gap-6 text-sm text-navy-300">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
+            <a href="#" className="hover:text-accent transition-colors">Privacy</a>
+            <a href="#" className="hover:text-accent transition-colors">Terms</a>
+            <a href="#" className="hover:text-accent transition-colors">Contact</a>
           </div>
         </div>
       </footer>
