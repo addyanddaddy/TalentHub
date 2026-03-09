@@ -59,7 +59,7 @@ const samplePosts = [
   },
   {
     id: "3",
-    author: { name: "Shapur Ahmadi", avatarUrl: null, role: "Director" },
+    author: { name: "Shahpoor Ahmadi", avatarUrl: null, role: "Director" },
     content: "Finished color grading on our thriller short. The atmosphere our DP created was incredible — LED walls are changing the game for indie productions. Can't wait to share the final cut with everyone.",
     postType: "update",
     imageUrl: null,

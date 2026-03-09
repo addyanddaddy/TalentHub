@@ -63,34 +63,34 @@ async function main() {
 
   console.log("  ✓ Ralph Martinez (Producer) — ralph@frameone.io");
 
-  // Account 2: Shapur (Director/DP)
-  const shapur = await prisma.user.upsert({
-    where: { email: "shapur@frameone.io" },
+  // Account 2: Shahpoor (Director/DP)
+  const shahpoor = await prisma.user.upsert({
+    where: { email: "shahpoor@frameone.io" },
     update: {},
     create: {
-      email: "shapur@frameone.io",
-      name: "Shapur Ahmadi",
+      email: "shahpoor@frameone.io",
+      name: "Shahpoor Ahmadi",
       passwordHash: password,
     },
   });
 
-  const shapurAccount = await prisma.account.upsert({
-    where: { id: shapur.id + "-account" },
+  const shahpoorAccount = await prisma.account.upsert({
+    where: { id: shahpoor.id + "-account" },
     update: {},
     create: {
-      id: shapur.id + "-account",
+      id: shahpoor.id + "-account",
       type: "INDIVIDUAL",
-      name: "Shapur Ahmadi",
-      billingOwnerUserId: shapur.id,
+      name: "Shahpoor Ahmadi",
+      billingOwnerUserId: shahpoor.id,
     },
   });
 
   await prisma.membership.upsert({
-    where: { id: shapur.id + "-membership" },
+    where: { id: shahpoor.id + "-membership" },
     update: {},
     create: {
-      id: shapur.id + "-membership",
-      accountId: shapurAccount.id,
+      id: shahpoor.id + "-membership",
+      accountId: shahpoorAccount.id,
       tier: "HIRING_PRO",
       status: "ACTIVE",
     },
@@ -98,12 +98,12 @@ async function main() {
 
   if (directorRole) {
     await prisma.roleProfile.upsert({
-      where: { userId_roleId: { userId: shapur.id, roleId: directorRole.id } },
+      where: { userId_roleId: { userId: shahpoor.id, roleId: directorRole.id } },
       update: {},
       create: {
-        userId: shapur.id,
+        userId: shahpoor.id,
         roleId: directorRole.id,
-        displayName: "Shapur Ahmadi",
+        displayName: "Shahpoor Ahmadi",
         bio: "Director and visual storyteller specializing in drama and thriller. Known for strong performances and atmospheric cinematography. Based in the Bay Area with projects across California.",
         city: "San Francisco",
         region: "California",
@@ -113,7 +113,7 @@ async function main() {
     });
   }
 
-  console.log("  ✓ Shapur Ahmadi (Director) — shapur@frameone.io");
+  console.log("  ✓ Shahpoor Ahmadi (Director) — shahpoor@frameone.io");
 
   // Account 3: Brandon (Admin/Multi-role)
   const brandon = await prisma.user.upsert({
@@ -245,7 +245,7 @@ async function main() {
   console.log("\nLogin credentials for all accounts:");
   console.log("  Password: FrameOne2026!");
   console.log("\n  ralph@frameone.io    — Producer (Hiring Pro tier)");
-  console.log("  shapur@frameone.io   — Director (Hiring Pro tier)");
+  console.log("  shahpoor@frameone.io   — Director (Hiring Pro tier)");
   console.log("  brandon@frameone.io  — Line Producer (Agency tier)");
   console.log("  demo@frameone.io     — DP + Editor (Free tier)");
 }

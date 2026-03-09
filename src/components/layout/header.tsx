@@ -16,7 +16,7 @@ interface HeaderProps {
 const sampleNotifications = [
   { id: 1, text: "Ralph Martinez invited you to Midnight Runner", time: "2 hours ago", read: false, link: "/projects" },
   { id: 2, text: "New casting breakdown: Lead Detective", time: "5 hours ago", read: false, link: "/casting" },
-  { id: 3, text: "Shapur Ahmadi endorsed your work", time: "Yesterday", read: false, link: "/profile/edit" },
+  { id: 3, text: "Shahpoor Ahmadi endorsed your work", time: "Yesterday", read: false, link: "/profile/edit" },
   { id: 4, text: "Your application for DP on City Pulse was viewed", time: "2 days ago", read: true, link: "/applications" },
   { id: 5, text: "Welcome to FrameOne! Complete your profile to get started.", time: "3 days ago", read: true, link: "/profile/edit" },
 ];

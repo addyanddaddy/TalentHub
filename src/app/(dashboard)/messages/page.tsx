@@ -20,7 +20,7 @@ const sampleConversations = [
   },
   {
     id: "2",
-    otherUser: { id: "u2", name: "Shapur Ahmadi", avatarUrl: null, role: "Director" },
+    otherUser: { id: "u2", name: "Shahpoor Ahmadi", avatarUrl: null, role: "Director" },
     lastMessage: { content: "The color grade looks amazing. Great work!", createdAt: "Yesterday", senderId: "u2" },
     unreadCount: 0,
   },

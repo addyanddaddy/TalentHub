@@ -1,6 +1,6 @@
 # FrameOne — Platform White Paper
 
-**Prepared for:** Ralph, Shapur & the FrameOne Founding Team
+**Prepared for:** Ralph, Shahpoor & the FrameOne Founding Team
 **Prepared by:** Brandon Bible (Technical Lead)
 **Date:** March 9, 2026
 **Version:** 1.0
