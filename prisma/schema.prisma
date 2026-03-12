@@ -169,6 +169,21 @@ enum EndorsementType {
 }
 
 // ─────────────────────────────────────────────────
+// PASSWORD RESET
+// ─────────────────────────────────────────────────
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([userId])
+}
+
+// ─────────────────────────────────────────────────
 // IDENTITY LAYER
 // ─────────────────────────────────────────────────
 

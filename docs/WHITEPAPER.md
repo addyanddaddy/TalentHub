@@ -1098,10 +1098,10 @@ SYSTEM
 
 | Item | Value |
 |------|-------|
-| **Repository URL** | `https://github.com/addyanddaddy/TalentHub` |
+| **Repository URL** | `https://github.com/addyanddaddy/Demo` |
 | **Branch** | `main` |
-| **Clone (SSH)** | `git clone git@github.com:addyanddaddy/TalentHub.git` |
-| **Clone (HTTPS)** | `git clone https://github.com/addyanddaddy/TalentHub.git` |
+| **Clone (SSH)** | `git clone git@github.com:addyanddaddy/Demo.git` |
+| **Clone (HTTPS)** | `git clone https://github.com/addyanddaddy/Demo.git` |
 
 ### Technology Requirements
 
@@ -1152,8 +1152,8 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"
 
 ```bash
 # 1. Clone the repository
-git clone git@github.com:addyanddaddy/TalentHub.git
-cd TalentHub
+git clone git@github.com:addyanddaddy/Demo.git
+cd Demo
 
 # 2. Install dependencies
 npm install
@@ -1178,7 +1178,7 @@ npm run dev
 
 ```bash
 # 1. Push to GitHub (already done)
-# 2. Go to vercel.com → Import → select addyanddaddy/TalentHub
+# 2. Go to vercel.com → Import → select addyanddaddy/Demo
 # 3. Add environment variables in Vercel dashboard
 # 4. Deploy — Vercel handles the rest
 ```
