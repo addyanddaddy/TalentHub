@@ -16,25 +16,26 @@ export default function CastingPage() {
   const [activeTab, setActiveTab] = useState("breakdowns");
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-10 animate-fade-in">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-navy-100">Casting</h1>
-          <p className="text-sm text-navy-200 mt-1">Manage casting breakdowns, submissions, and auditions.</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-2">Talent</p>
+          <h1 className="text-3xl font-light tracking-tight text-[#edebe2]">Casting</h1>
+          <p className="text-sm text-[#6b6b78] mt-2">Manage casting breakdowns, submissions, and auditions.</p>
         </div>
-        <Button className="gap-2">
-          <PlusIcon className="h-4 w-4" />
+        <Button className="gap-2 rounded-full bg-[#9d7663] hover:bg-[#9d7663]/90 text-white px-6">
+          <PlusIcon className="h-4 w-4 stroke-[1.5]" />
           New Breakdown
         </Button>
       </div>
 
-      <div className="flex gap-1 rounded-lg bg-navy-900/50 p-1 border border-navy-700 w-fit">
+      <div className="flex gap-1 rounded-full bg-[#0f0f14]/60 p-1 border border-white/[0.08] w-fit">
         {["breakdowns", "my-submissions", "auditions"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`rounded-md px-3 py-1.5 text-sm font-medium capitalize transition-colors ${
-              activeTab === tab ? "bg-navy-700 text-white" : "text-navy-200 hover:text-white"
+            className={`rounded-full px-4 py-1.5 text-sm font-medium capitalize transition-colors ${
+              activeTab === tab ? "bg-white/[0.06] text-[#edebe2]" : "text-[#8a8a96] hover:text-[#edebe2]"
             }`}
           >
             {tab.replace("-", " ")}
@@ -42,38 +43,44 @@ export default function CastingPage() {
         ))}
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-5">
         {sampleBreakdowns.map((b) => (
-          <Card key={b.id} variant="interactive" className="p-6">
+          <div key={b.id} className="bg-[#1a1a22] rounded-2xl p-6 hover:bg-[#1a1a22]/80 transition-colors group">
             <div className="flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-3">
-                  <h3 className="text-lg font-semibold text-white">{b.roleName}</h3>
-                  <Badge variant="success" size="sm">{b.status}</Badge>
+                  <h3 className="text-lg font-normal tracking-tight text-[#edebe2]">{b.roleName}</h3>
+                  <span className="flex items-center gap-1.5 rounded-full bg-white/[0.06] px-3 py-0.5 text-xs font-medium text-[#edebe2]">
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                    {b.status}
+                  </span>
                 </div>
-                <p className="text-sm text-accent mt-1">{b.project}</p>
-                <div className="flex items-center gap-4 mt-3 text-sm text-navy-200">
+                <p className="text-sm text-[#c4a47a] mt-1.5">{b.project}</p>
+                <div className="flex items-center gap-4 mt-3 text-sm text-[#6b6b78]">
                   <span>Age: {b.ageRange}</span>
+                  <span className="text-white/[0.08]">|</span>
                   <span>Gender: {b.gender}</span>
+                  <span className="text-white/[0.08]">|</span>
                   <span>{b.compensation}</span>
                 </div>
+                <p className="text-[11px] text-[#c4a47a] font-medium tracking-wide mt-3">✦ AI-Enhanced Smart Matching</p>
               </div>
               <div className="text-right space-y-2">
-                <div className="flex items-center gap-1.5 text-sm text-navy-200">
-                  <UserGroupIcon className="h-4 w-4" />
-                  {b.submissions} submissions
+                <div className="flex items-center gap-1.5 text-sm text-[#6b6b78]">
+                  <UserGroupIcon className="h-4 w-4 stroke-[1.5]" />
+                  <span className="text-[#c4a47a] font-medium">{b.submissions}</span> submissions
                 </div>
-                <div className="flex items-center gap-1.5 text-sm text-navy-200">
-                  <ClockIcon className="h-4 w-4" />
+                <div className="flex items-center gap-1.5 text-sm text-[#6b6b78]">
+                  <ClockIcon className="h-4 w-4 stroke-[1.5]" />
                   Due {b.deadline}
                 </div>
               </div>
             </div>
-            <div className="flex gap-2 mt-4">
-              <Button variant="primary" size="sm">View Submissions</Button>
-              <Button variant="outline" size="sm">Edit Breakdown</Button>
+            <div className="flex gap-3 mt-5">
+              <Button variant="primary" size="sm" className="rounded-full bg-white/[0.06] hover:bg-white/[0.10] text-[#edebe2] text-sm px-4">View Submissions</Button>
+              <Button variant="outline" size="sm" className="rounded-lg border-white/[0.08] text-[#8a8a96] hover:text-[#edebe2] text-sm">Edit Breakdown</Button>
             </div>
-          </Card>
+          </div>
         ))}
       </div>
     </div>

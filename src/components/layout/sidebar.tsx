@@ -57,8 +57,8 @@ export function Sidebar({ user }: SidebarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const NavSection = ({ label, items }: { label: string; items: typeof platformNav }) => (
-    <div className="space-y-1">
-      <p className="px-3 text-[10px] font-semibold uppercase tracking-wider text-navy-300 mb-2">
+    <div className="space-y-0.5">
+      <p className="px-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-marble-500 mb-2">
         {label}
       </p>
       {items.map((item) => {
@@ -69,13 +69,13 @@ export function Sidebar({ user }: SidebarProps) {
             href={item.href}
             onClick={() => setMobileOpen(false)}
             className={cn(
-              "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              "flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-normal transition-colors",
               isActive
-                ? "bg-accent/20 text-accent"
-                : "text-navy-200 hover:bg-navy-700 hover:text-white"
+                ? "bg-bronze/10 text-bronze"
+                : "text-marble-500 hover:bg-white/[0.04] hover:text-marble"
             )}
           >
-            <item.icon className="h-5 w-5 shrink-0" />
+            <item.icon className="h-[18px] w-[18px] shrink-0 stroke-[1.5]" />
             <span>{item.name}</span>
           </Link>
         );
@@ -85,39 +85,41 @@ export function Sidebar({ user }: SidebarProps) {
 
   const sidebarContent = (
     <>
-      <div className="flex h-14 items-center gap-3 px-3 border-b border-navy-700">
+      <div className="flex h-16 items-center gap-3 px-4 py-5 border-b border-white/[0.06]">
         <Link href="/dashboard" className="flex items-center gap-2.5">
           <Image src="/logo.png" alt="FrameOne" width={32} height={32} className="rounded-md" />
-          <span className="text-base font-semibold text-white">FrameOne</span>
+          <span className="text-base font-light tracking-wide text-marble">FrameOne</span>
         </Link>
       </div>
 
-      <nav className="flex-1 space-y-6 overflow-y-auto p-3">
+      <nav className="flex-1 space-y-6 overflow-y-auto p-3 pt-4">
         <NavSection label="Platform" items={platformNav} />
+        <div className="border-t border-white/[0.06]" />
         <NavSection label="My Work" items={workNav} />
+        <div className="border-t border-white/[0.06]" />
         <NavSection label="Finance" items={financeNav} />
       </nav>
 
-      <div className="border-t border-navy-700 p-3 space-y-1">
+      <div className="border-t border-white/[0.06] p-3 space-y-1">
         <Link
           href="/settings"
           className={cn(
-            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+            "flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-normal transition-colors",
             pathname === "/settings"
-              ? "bg-accent/20 text-accent"
-              : "text-navy-200 hover:bg-navy-700 hover:text-white"
+              ? "bg-bronze/10 text-bronze"
+              : "text-marble-500 hover:bg-white/[0.04] hover:text-marble"
           )}
         >
-          <Cog6ToothIcon className="h-5 w-5" />
+          <Cog6ToothIcon className="h-[18px] w-[18px] stroke-[1.5]" />
           <span>Settings</span>
         </Link>
 
         {user && (
-          <div className="flex items-center gap-3 rounded-lg px-3 py-2">
+          <div className="flex items-center gap-3 rounded-lg px-3 py-3 mt-2">
             <Avatar name={user.name || "User"} src={user.image} size="sm" />
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-white truncate">{user.name}</p>
-              <p className="text-xs text-navy-300 truncate">{user.email}</p>
+              <p className="text-[13px] font-normal text-marble truncate">{user.name}</p>
+              <p className="text-xs text-marble-500 truncate">{user.email}</p>
             </div>
           </div>
         )}
@@ -130,7 +132,7 @@ export function Sidebar({ user }: SidebarProps) {
       {/* Mobile toggle */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
-        className="fixed top-3 left-3 z-50 rounded-lg bg-navy-700 p-2 text-navy-200 hover:text-white lg:hidden"
+        className="fixed top-3.5 left-3 z-50 rounded-lg bg-navy-800 p-2 text-marble-500 hover:text-marble lg:hidden"
       >
         {mobileOpen ? <XMarkIcon className="h-5 w-5" /> : <Bars3Icon className="h-5 w-5" />}
       </button>
@@ -138,7 +140,7 @@ export function Sidebar({ user }: SidebarProps) {
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/60 lg:hidden"
+          className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
@@ -146,7 +148,7 @@ export function Sidebar({ user }: SidebarProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-navy-700 bg-navy-900",
+          "fixed inset-y-0 left-0 z-40 flex w-56 flex-col border-r border-white/[0.08] bg-navy-900",
           "transition-transform duration-200 lg:translate-x-0 lg:static",
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         )}

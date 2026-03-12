@@ -15,11 +15,11 @@ interface AppShellProps {
 
 export function AppShell({ children, title, user }: AppShellProps) {
   return (
-    <div className="flex min-h-screen bg-navy-950">
+    <div className="flex min-h-screen bg-surface-950">
       <Sidebar user={user} />
       <div className="flex flex-1 flex-col min-w-0">
         <Header title={title} user={user} />
-        <main className="flex-1 overflow-y-auto p-4 lg:p-8">
+        <main className="flex-1 overflow-y-auto p-6 lg:p-10 transition-all duration-300 ease-out">
           {children}
         </main>
       </div>

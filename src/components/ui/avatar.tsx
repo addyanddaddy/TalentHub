@@ -21,7 +21,8 @@ export function Avatar({ src, name, size = "md", className }: AvatarProps) {
   return (
     <div
       className={cn(
-        "relative flex shrink-0 items-center justify-center rounded-full bg-navy-600 font-medium text-white overflow-hidden ring-2 ring-navy-500/40",
+        "relative flex shrink-0 items-center justify-center rounded-full overflow-hidden ring-1 ring-white/[0.08] hover:ring-2 hover:ring-bronze/30 transition-all duration-200",
+        src ? "bg-navy-800" : "bg-bronze/20 text-bronze font-medium",
         sizeClasses[size],
         className
       )}
@@ -42,10 +43,10 @@ export function AvatarStack({ users, max = 4 }: { users: Array<{ name: string; s
   return (
     <div className="flex -space-x-2">
       {visible.map((user, i) => (
-        <Avatar key={i} src={user.src} name={user.name} size="sm" className="ring-2 ring-zinc-900" />
+        <Avatar key={i} src={user.src} name={user.name} size="sm" className="ring-1 ring-navy-900" />
       ))}
       {remaining > 0 && (
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-navy-600 text-xs font-medium text-white ring-2 ring-navy-500/40">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-bronze/20 text-xs font-medium text-bronze ring-1 ring-navy-900">
           +{remaining}
         </div>
       )}

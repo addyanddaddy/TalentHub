@@ -13,63 +13,66 @@ const sampleTransactions = [
 
 export default function PaymentsPage() {
   return (
-    <div className="space-y-6 animate-fade-in">
-      <div className="flex items-center justify-between">
+    <div className="space-y-10 animate-fade-in">
+      {/* Header */}
+      <div className="flex items-end justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-navy-100">Payments</h1>
-          <p className="text-sm text-navy-200 mt-1">Track earnings, payouts, and subscription billing.</p>
+          <h1 className="text-3xl font-light tracking-tight text-[#edebe2]">Payments</h1>
+          <p className="text-sm text-[#8a8a96] mt-2 tracking-wide">Track earnings, payouts, and subscription billing.</p>
         </div>
-        <Button variant="outline" className="gap-2">
+        <Button variant="outline" className="gap-2 rounded-xl border-white/[0.08] bg-white/[0.04] text-[#b8b5a8] hover:bg-white/[0.08] hover:text-[#edebe2] transition-all duration-300">
           <CurrencyDollarIcon className="h-4 w-4" />
           Connect Stripe
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="p-5">
-          <p className="text-sm text-navy-200">Total Earned</p>
-          <p className="text-2xl font-bold text-white mt-1">$17,200.00</p>
-          <p className="text-xs text-emerald-400 mt-1">+$12,800 this month</p>
-        </Card>
-        <Card className="p-5">
-          <p className="text-sm text-navy-200">Pending Payouts</p>
-          <p className="text-2xl font-bold text-white mt-1">$0.00</p>
-          <p className="text-xs text-navy-300 mt-1">All caught up</p>
-        </Card>
-        <Card className="p-5">
-          <p className="text-sm text-navy-200">Subscription</p>
-          <p className="text-2xl font-bold text-white mt-1">$19/mo</p>
-          <p className="text-xs text-navy-300 mt-1">Pro Supply • Renews Apr 1</p>
-        </Card>
+      {/* Balance / Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="rounded-2xl bg-[#1a1a22] border border-white/[0.08] p-7">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-3">Total Earned</p>
+          <p className="text-3xl font-light text-[#c4a47a] tracking-tight">$17,200.00</p>
+          <p className="text-xs text-emerald-400/80 mt-3 tracking-wide">+$12,800 this month</p>
+        </div>
+        <div className="rounded-2xl bg-[#1a1a22] border border-white/[0.08] p-7">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-3">Pending Payouts</p>
+          <p className="text-3xl font-light text-[#c4a47a] tracking-tight">$0.00</p>
+          <p className="text-xs text-[#8a8a96] mt-3 tracking-wide">All caught up</p>
+        </div>
+        <div className="rounded-2xl bg-[#1a1a22] border border-white/[0.08] p-7">
+          <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-3">Subscription</p>
+          <p className="text-3xl font-light text-[#c4a47a] tracking-tight">$19<span className="text-lg text-[#8a8a96]">/mo</span></p>
+          <p className="text-xs text-[#8a8a96] mt-3 tracking-wide">Pro Supply &middot; Renews Apr 1</p>
+        </div>
       </div>
 
+      {/* Recent Transactions */}
       <div>
-        <h2 className="text-lg font-semibold text-navy-100 mb-4">Recent Transactions</h2>
-        <div className="space-y-2">
+        <h2 className="text-lg font-light text-[#edebe2] mb-6 tracking-wide">Recent Transactions</h2>
+        <div className="rounded-2xl bg-[#1a1a22] border border-white/[0.08] overflow-hidden divide-y divide-white/[0.06]">
           {sampleTransactions.map((tx) => (
-            <Card key={tx.id} className="p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className={`flex h-9 w-9 items-center justify-center rounded-lg ${tx.type === "incoming" ? "bg-emerald-500/10" : "bg-navy-700"}`}>
-                    {tx.type === "incoming" ? (
-                      <ArrowDownLeftIcon className="h-4 w-4 text-emerald-400" />
-                    ) : (
-                      <ArrowUpRightIcon className="h-4 w-4 text-navy-200" />
-                    )}
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-white">{tx.description}</p>
-                    <p className="text-xs text-navy-300">{tx.date}</p>
-                  </div>
+            <div key={tx.id} className="flex items-center justify-between px-6 py-5 hover:bg-white/[0.02] transition-colors duration-300">
+              <div className="flex items-center gap-4">
+                <div className={`flex h-10 w-10 items-center justify-center rounded-full ${tx.type === "incoming" ? "bg-emerald-500/10" : "bg-white/[0.04]"}`}>
+                  {tx.type === "incoming" ? (
+                    <ArrowDownLeftIcon className="h-4 w-4 text-emerald-400/80" />
+                  ) : (
+                    <ArrowUpRightIcon className="h-4 w-4 text-[#8a8a96]" />
+                  )}
                 </div>
-                <div className="text-right">
-                  <p className={`text-sm font-semibold ${tx.type === "incoming" ? "text-emerald-400" : "text-white"}`}>
-                    {tx.type === "incoming" ? "+" : "-"}{tx.amount}
-                  </p>
-                  <Badge variant="success" size="sm">{tx.status}</Badge>
+                <div>
+                  <p className="text-sm font-normal text-[#edebe2]">{tx.description}</p>
+                  <p className="text-xs text-[#8a8a96] mt-0.5">{tx.date}</p>
                 </div>
               </div>
-            </Card>
+              <div className="flex items-center gap-4">
+                <p className={`text-sm font-light tabular-nums ${tx.type === "incoming" ? "text-emerald-400/90" : "text-[#edebe2]"}`}>
+                  {tx.type === "incoming" ? "+" : "-"}{tx.amount}
+                </p>
+                <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.15em] text-emerald-400/80">
+                  {tx.status}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
       </div>

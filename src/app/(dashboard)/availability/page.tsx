@@ -2,9 +2,6 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge, StatusDot } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { CalendarDaysIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const sampleAvailability = [
@@ -13,79 +10,152 @@ const sampleAvailability = [
   { id: 3, startDate: "2026-08-01", endDate: "2026-10-31", status: "AVAILABLE", city: "Los Angeles", region: "California" },
 ];
 
-const statusMap: Record<string, { label: string; dot: "available" | "hold" | "booked" }> = {
-  AVAILABLE: { label: "Available", dot: "available" },
-  SOFT_HOLD: { label: "Soft Hold", dot: "hold" },
-  FIRM_HOLD: { label: "Firm Hold", dot: "hold" },
-  BOOKED: { label: "Booked", dot: "booked" },
+const statusMap: Record<string, { label: string; dotColor: string; textColor: string }> = {
+  AVAILABLE: { label: "Available", dotColor: "bg-emerald-500", textColor: "text-emerald-400" },
+  SOFT_HOLD: { label: "Soft Hold", dotColor: "bg-amber-500", textColor: "text-amber-400" },
+  FIRM_HOLD: { label: "Firm Hold", dotColor: "bg-orange-500", textColor: "text-orange-400" },
+  BOOKED: { label: "Booked", dotColor: "bg-[#9d7663]", textColor: "text-[#c4a47a]" },
 };
 
 export default function AvailabilityPage() {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="max-w-4xl mx-auto space-y-10 animate-fade-in py-4">
+      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-navy-100">Availability</h1>
-          <p className="text-sm text-navy-200 mt-1">Manage your schedule so productions can find you when you are free.</p>
+          <h1 className="text-2xl font-light text-[#edebe2] tracking-tight">Availability</h1>
+          <p className="text-[13px] text-[#8a8a96] mt-2 tracking-wide">Manage your schedule so productions can find you when you are free.</p>
         </div>
-        <Button className="gap-2" onClick={() => setShowForm(!showForm)}>
+        <button
+          onClick={() => setShowForm(!showForm)}
+          className="inline-flex items-center gap-2 rounded-xl bg-[#9d7663] px-5 py-2.5 text-[13px] font-medium text-white tracking-wide hover:bg-[#c4a47a] transition-colors"
+        >
           <PlusIcon className="h-4 w-4" />
           Add Availability
-        </Button>
+        </button>
       </div>
 
+      {/* New availability form */}
       {showForm && (
-        <Card className="p-6">
-          <h3 className="text-base font-semibold text-white mb-4">New Availability Block</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Input label="Start Date" type="date" />
-            <Input label="End Date" type="date" />
+        <div className="bg-[#1a1a22] rounded-2xl border border-white/[0.08] p-8">
+          <h3 className="text-lg font-light text-[#edebe2] mb-6">New Availability Block</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="space-y-1.5">
-              <label className="block text-sm font-medium text-navy-100">Status</label>
-              <select className="w-full rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none">
+              <label className="block text-[13px] font-medium text-[#b8b5a8] tracking-wide">Start Date</label>
+              <input
+                type="date"
+                className="w-full rounded-xl bg-white/[0.04] border border-white/[0.08] px-4 py-3 text-sm text-white focus:border-[#9d7663]/50 focus:outline-none focus:ring-0 transition-colors"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="block text-[13px] font-medium text-[#b8b5a8] tracking-wide">End Date</label>
+              <input
+                type="date"
+                className="w-full rounded-xl bg-white/[0.04] border border-white/[0.08] px-4 py-3 text-sm text-white focus:border-[#9d7663]/50 focus:outline-none focus:ring-0 transition-colors"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="block text-[13px] font-medium text-[#b8b5a8] tracking-wide">Status</label>
+              <select className="w-full rounded-xl bg-white/[0.04] border border-white/[0.08] px-4 py-3 text-sm text-white focus:border-[#9d7663]/50 focus:outline-none focus:ring-0 transition-colors appearance-none">
                 <option value="AVAILABLE">Available</option>
                 <option value="SOFT_HOLD">Soft Hold</option>
                 <option value="FIRM_HOLD">Firm Hold</option>
                 <option value="BOOKED">Booked</option>
               </select>
             </div>
-            <Input label="City" placeholder="Los Angeles" />
-            <Input label="Region" placeholder="California" />
-            <Input label="Country" placeholder="United States" />
+            <div className="space-y-1.5">
+              <label className="block text-[13px] font-medium text-[#b8b5a8] tracking-wide">City</label>
+              <input
+                type="text"
+                placeholder="Los Angeles"
+                className="w-full rounded-xl bg-white/[0.04] border border-white/[0.08] px-4 py-3 text-sm text-white placeholder-[#6b6b78] focus:border-[#9d7663]/50 focus:outline-none focus:ring-0 transition-colors"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="block text-[13px] font-medium text-[#b8b5a8] tracking-wide">Region</label>
+              <input
+                type="text"
+                placeholder="California"
+                className="w-full rounded-xl bg-white/[0.04] border border-white/[0.08] px-4 py-3 text-sm text-white placeholder-[#6b6b78] focus:border-[#9d7663]/50 focus:outline-none focus:ring-0 transition-colors"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="block text-[13px] font-medium text-[#b8b5a8] tracking-wide">Country</label>
+              <input
+                type="text"
+                placeholder="United States"
+                className="w-full rounded-xl bg-white/[0.04] border border-white/[0.08] px-4 py-3 text-sm text-white placeholder-[#6b6b78] focus:border-[#9d7663]/50 focus:outline-none focus:ring-0 transition-colors"
+              />
+            </div>
           </div>
-          <div className="flex justify-end gap-2 mt-4">
-            <Button variant="ghost" onClick={() => setShowForm(false)}>Cancel</Button>
-            <Button>Save</Button>
+          <div className="flex justify-end gap-3 mt-6">
+            <button
+              onClick={() => setShowForm(false)}
+              className="rounded-xl px-5 py-2.5 text-[13px] font-medium text-[#8a8a96] hover:text-[#b8b5a8] transition-colors"
+            >
+              Cancel
+            </button>
+            <button className="rounded-xl bg-[#9d7663] px-6 py-2.5 text-[13px] font-medium text-white tracking-wide hover:bg-[#c4a47a] transition-colors">
+              Save
+            </button>
           </div>
-        </Card>
+        </div>
       )}
 
-      <div className="space-y-3">
+      {/* Status legend */}
+      <div className="flex items-center gap-6">
+        {Object.entries(statusMap).map(([key, val]) => (
+          <div key={key} className="flex items-center gap-2">
+            <span className={`h-2 w-2 rounded-full ${val.dotColor}`} />
+            <span className="text-[12px] text-[#6b6b78] tracking-wide">{val.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Availability cards */}
+      <div className="space-y-4">
         {sampleAvailability.map((a) => {
           const info = statusMap[a.status] || statusMap.AVAILABLE;
+          const start = new Date(a.startDate);
+          const end = new Date(a.endDate);
+          const durationDays = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+
           return (
-            <Card key={a.id} className="p-5">
+            <div key={a.id} className="bg-[#1a1a22] rounded-2xl border border-white/[0.08] p-6 group hover:border-white/[0.12] transition-colors">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/20">
-                    <CalendarDaysIcon className="h-5 w-5 text-accent" />
+                <div className="flex items-center gap-5">
+                  {/* Calendar icon */}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/[0.04]">
+                    <CalendarDaysIcon className="h-5 w-5 text-[#6b6b78]" />
                   </div>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <p className="text-sm font-semibold text-white">
-                        {new Date(a.startDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })} — {new Date(a.endDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                      </p>
-                      <StatusDot status={info.dot} />
-                      <Badge variant={a.status === "AVAILABLE" ? "success" : "warning"} size="sm">{info.label}</Badge>
+
+                  <div className="space-y-1.5">
+                    {/* Date range */}
+                    <p className="text-[15px] font-light text-[#edebe2] tracking-tight">
+                      {start.toLocaleDateString("en-US", { month: "short", day: "numeric" })} — {end.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                    </p>
+
+                    {/* Status + location row */}
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-2">
+                        <span className={`h-2 w-2 rounded-full ${info.dotColor}`} />
+                        <span className={`text-[13px] font-medium ${info.textColor}`}>{info.label}</span>
+                      </div>
+                      <span className="w-px h-3 bg-white/[0.08]" />
+                      <span className="text-[12px] text-[#6b6b78]">{a.city}, {a.region}</span>
+                      <span className="w-px h-3 bg-white/[0.08]" />
+                      <span className="text-[12px] text-[#6b6b78]">{durationDays} days</span>
                     </div>
-                    <p className="text-xs text-navy-200 mt-0.5">{a.city}, {a.region}</p>
                   </div>
                 </div>
-                <Button variant="ghost" size="sm">Edit</Button>
+
+                <button className="text-[13px] font-medium text-[#9d7663] hover:text-[#c4a47a] transition-colors opacity-0 group-hover:opacity-100">
+                  Edit
+                </button>
               </div>
-            </Card>
+            </div>
           );
         })}
       </div>

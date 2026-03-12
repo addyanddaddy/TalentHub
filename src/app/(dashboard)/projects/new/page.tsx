@@ -55,37 +55,49 @@ export default function NewProjectPage() {
     }
   };
 
+  const selectClasses =
+    "w-full rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm text-[#edebe2] focus:border-[#9d7663]/50 focus:outline-none focus:ring-2 focus:ring-[#9d7663]/20 transition-colors";
+
   return (
-    <div className="space-y-6 animate-fade-in max-w-2xl">
+    <div className="space-y-10 animate-fade-in max-w-2xl">
       <div>
-        <h1 className="text-2xl font-bold text-navy-100">Create New Project</h1>
-        <p className="text-sm text-navy-200 mt-1">Set up a new production and start building your team.</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-2">New Production</p>
+        <h1 className="text-3xl font-light tracking-tight text-[#edebe2]">Create New Project</h1>
+        <p className="text-sm text-[#6b6b78] mt-2">Set up a new production and start building your team.</p>
       </div>
 
-      <Card className="p-6">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            label="Project Title"
-            placeholder="e.g., Midnight Runner"
-            value={form.title}
-            onChange={(e) => setForm({ ...form, title: e.target.value })}
-            required
-          />
+      <Card className="p-8 bg-[#1a1a22] rounded-2xl border-white/[0.08]">
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <label className="block text-[13px] font-medium text-[#b8b5a8]">Project Title</label>
+            <input
+              type="text"
+              placeholder="e.g., Midnight Runner"
+              value={form.title}
+              onChange={(e) => setForm({ ...form, title: e.target.value })}
+              required
+              className={`${selectClasses}`}
+            />
+          </div>
 
-          <Textarea
-            label="Logline"
-            placeholder="A brief summary of the project..."
-            value={form.logline}
-            onChange={(e) => setForm({ ...form, logline: e.target.value })}
-          />
+          <div className="space-y-2">
+            <label className="block text-[13px] font-medium text-[#b8b5a8]">Logline</label>
+            <textarea
+              placeholder="A brief summary of the project..."
+              value={form.logline}
+              onChange={(e) => setForm({ ...form, logline: e.target.value })}
+              rows={3}
+              className={`${selectClasses} resize-none`}
+            />
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-1.5">
-              <label className="block text-sm font-medium text-navy-100">Format</label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="block text-[13px] font-medium text-[#b8b5a8]">Format</label>
               <select
                 value={form.format}
                 onChange={(e) => setForm({ ...form, format: e.target.value })}
-                className="w-full rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none"
+                className={selectClasses}
               >
                 {formats.map((f) => (
                   <option key={f.value} value={f.value}>{f.label}</option>
@@ -93,12 +105,12 @@ export default function NewProjectPage() {
               </select>
             </div>
 
-            <div className="space-y-1.5">
-              <label className="block text-sm font-medium text-navy-100">Stage</label>
+            <div className="space-y-2">
+              <label className="block text-[13px] font-medium text-[#b8b5a8]">Stage</label>
               <select
                 value={form.stage}
                 onChange={(e) => setForm({ ...form, stage: e.target.value })}
-                className="w-full rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none"
+                className={selectClasses}
               >
                 {stages.map((s) => (
                   <option key={s.value} value={s.value}>{s.label}</option>
@@ -107,12 +119,12 @@ export default function NewProjectPage() {
             </div>
           </div>
 
-          <div className="space-y-1.5">
-            <label className="block text-sm font-medium text-navy-100">Visibility</label>
+          <div className="space-y-2">
+            <label className="block text-[13px] font-medium text-[#b8b5a8]">Visibility</label>
             <select
               value={form.visibility}
               onChange={(e) => setForm({ ...form, visibility: e.target.value })}
-              className="w-full rounded-lg border border-navy-600 bg-navy-700 px-3 py-2.5 text-sm text-white focus:border-accent focus:outline-none"
+              className={selectClasses}
             >
               <option value="PRIVATE">Private — Only team members</option>
               <option value="INVITE_ONLY">Invite Only — Visible to invited users</option>
@@ -120,9 +132,9 @@ export default function NewProjectPage() {
             </select>
           </div>
 
-          <div className="flex justify-end gap-3 pt-4">
-            <Button type="button" variant="ghost" onClick={() => router.push("/projects")}>Cancel</Button>
-            <Button type="submit" loading={loading}>Create Project</Button>
+          <div className="flex justify-end gap-3 pt-6 border-t border-white/[0.08]">
+            <Button type="button" variant="ghost" onClick={() => router.push("/projects")} className="rounded-lg text-[#8a8a96] hover:text-[#edebe2]">Cancel</Button>
+            <Button type="submit" loading={loading} className="rounded-full bg-[#9d7663] hover:bg-[#9d7663]/90 text-white px-6">Create Project</Button>
           </div>
         </form>
       </Card>

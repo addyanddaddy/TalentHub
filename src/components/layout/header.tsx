@@ -49,43 +49,40 @@ export function Header({ title, user }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-14 items-center justify-between border-b border-navy-700 bg-navy-900/90 backdrop-blur-md px-4 lg:px-8">
-      <h1 className="text-lg font-semibold text-white pl-10 lg:pl-0">{title}</h1>
+    <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-white/[0.08] bg-navy-900/80 backdrop-blur-xl px-4 lg:px-8">
+      <h1 className="text-lg font-light tracking-wide text-marble pl-10 lg:pl-0">{title}</h1>
 
       <div className="flex items-center gap-3">
         {/* Search */}
-        <div className="hidden md:flex items-center gap-2 rounded-lg border border-navy-700 bg-navy-900 px-3 py-1.5">
-          <MagnifyingGlassIcon className="h-4 w-4 text-navy-300" />
+        <div className="hidden md:flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-1.5">
+          <MagnifyingGlassIcon className="h-4 w-4 text-marble-500" />
           <input
             type="text"
             placeholder="Search..."
-            className="bg-transparent text-sm text-white placeholder-navy-300 outline-none w-48"
+            className="bg-transparent text-sm text-marble placeholder-marble-500 outline-none w-56"
           />
-          <kbd className="hidden sm:inline-flex items-center rounded border border-navy-600 bg-navy-700 px-1.5 py-0.5 text-[10px] text-navy-300">
-            /
-          </kbd>
         </div>
 
         {/* Notifications */}
         <div className="relative" ref={notifRef}>
           <button
             onClick={() => { setShowNotifications(!showNotifications); setShowUserMenu(false); }}
-            className="relative rounded-lg p-2 text-navy-200 hover:bg-navy-700 hover:text-white transition-colors"
+            className="relative rounded-lg p-2 text-marble-500 hover:bg-white/[0.04] hover:text-marble transition-colors"
           >
             <BellIcon className="h-5 w-5" />
             {unreadCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-white">
+              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-bronze text-[10px] font-bold text-white">
                 {unreadCount}
               </span>
             )}
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 top-full mt-2 w-80 rounded-xl border border-navy-700 bg-navy-900 shadow-xl shadow-black/40 overflow-hidden">
-              <div className="flex items-center justify-between px-4 py-3 border-b border-navy-700">
-                <h3 className="text-sm font-semibold text-white">Notifications</h3>
+            <div className="absolute right-0 top-full mt-2 w-80 rounded-xl border border-white/[0.08] bg-navy-800 shadow-2xl shadow-black/40 overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.08]">
+                <h3 className="text-sm font-light tracking-wide text-marble">Notifications</h3>
                 {unreadCount > 0 && (
-                  <button onClick={markAllRead} className="text-xs text-accent hover:text-accent-light">
+                  <button onClick={markAllRead} className="text-xs text-bronze hover:text-accent-light transition-colors">
                     Mark all read
                   </button>
                 )}
@@ -99,18 +96,18 @@ export function Header({ title, user }: HeaderProps) {
                       setNotifications(notifications.map((n) => n.id === notif.id ? { ...n, read: true } : n));
                       setShowNotifications(false);
                     }}
-                    className={`flex items-start gap-3 px-4 py-3 hover:bg-navy-700/50 transition-colors ${
-                      !notif.read ? "bg-accent/5" : ""
+                    className={`flex items-start gap-3 px-4 py-3.5 hover:bg-white/[0.04] transition-colors ${
+                      !notif.read ? "bg-bronze/[0.04]" : ""
                     }`}
                   >
                     {!notif.read && (
-                      <span className="mt-1.5 flex h-2 w-2 shrink-0 rounded-full bg-accent" />
+                      <span className="mt-1.5 flex h-2 w-2 shrink-0 rounded-full bg-bronze" />
                     )}
                     <div className={!notif.read ? "" : "pl-5"}>
-                      <p className={`text-sm leading-snug ${!notif.read ? "text-white" : "text-navy-200"}`}>
+                      <p className={`text-[13px] leading-snug ${!notif.read ? "text-marble" : "text-marble-500"}`}>
                         {notif.text}
                       </p>
-                      <p className="text-xs text-navy-300 mt-1">{notif.time}</p>
+                      <p className="text-xs text-marble-500/70 mt-1">{notif.time}</p>
                     </div>
                   </Link>
                 ))}
@@ -118,7 +115,7 @@ export function Header({ title, user }: HeaderProps) {
               <Link
                 href="/messages"
                 onClick={() => setShowNotifications(false)}
-                className="block text-center px-4 py-3 text-xs font-medium text-accent hover:text-accent-light border-t border-navy-700"
+                className="block text-center px-4 py-3 text-xs font-normal text-bronze hover:text-accent-light border-t border-white/[0.08] transition-colors"
               >
                 View all notifications
               </Link>
@@ -131,29 +128,29 @@ export function Header({ title, user }: HeaderProps) {
           <div className="relative" ref={userRef}>
             <button
               onClick={() => { setShowUserMenu(!showUserMenu); setShowNotifications(false); }}
-              className="rounded-full hover:ring-2 hover:ring-zinc-700 transition-all"
+              className="rounded-full hover:ring-2 hover:ring-white/[0.12] transition-all"
             >
               <Avatar name={user.name || "User"} src={user.image} size="sm" />
             </button>
 
             {showUserMenu && (
-              <div className="absolute right-0 top-full mt-2 w-56 rounded-xl border border-navy-700 bg-navy-900 shadow-xl shadow-black/40 overflow-hidden">
-                <div className="px-4 py-3 border-b border-navy-700">
-                  <p className="text-sm font-semibold text-white">{user.name}</p>
+              <div className="absolute right-0 top-full mt-2 w-56 rounded-xl border border-white/[0.08] bg-navy-800 shadow-2xl shadow-black/40 overflow-hidden">
+                <div className="px-4 py-3 border-b border-white/[0.08]">
+                  <p className="text-sm font-light tracking-wide text-marble">{user.name}</p>
                 </div>
                 <div className="py-1">
-                  <Link href="/profile/edit" onClick={() => setShowUserMenu(false)} className="block px-4 py-2 text-sm text-navy-200 hover:bg-navy-700 hover:text-white transition-colors">
+                  <Link href="/profile/edit" onClick={() => setShowUserMenu(false)} className="block px-4 py-2.5 text-[13px] text-marble-500 hover:bg-white/[0.04] hover:text-marble transition-colors">
                     My Profiles
                   </Link>
-                  <Link href="/settings" onClick={() => setShowUserMenu(false)} className="block px-4 py-2 text-sm text-navy-200 hover:bg-navy-700 hover:text-white transition-colors">
+                  <Link href="/settings" onClick={() => setShowUserMenu(false)} className="block px-4 py-2.5 text-[13px] text-marble-500 hover:bg-white/[0.04] hover:text-marble transition-colors">
                     Settings
                   </Link>
-                  <Link href="/availability" onClick={() => setShowUserMenu(false)} className="block px-4 py-2 text-sm text-navy-200 hover:bg-navy-700 hover:text-white transition-colors">
+                  <Link href="/availability" onClick={() => setShowUserMenu(false)} className="block px-4 py-2.5 text-[13px] text-marble-500 hover:bg-white/[0.04] hover:text-marble transition-colors">
                     Availability
                   </Link>
                 </div>
-                <div className="border-t border-navy-700 py-1">
-                  <Link href="/api/auth/signout" onClick={() => setShowUserMenu(false)} className="block px-4 py-2 text-sm text-red-400 hover:bg-navy-700 transition-colors">
+                <div className="border-t border-white/[0.08] py-1">
+                  <Link href="/api/auth/signout" onClick={() => setShowUserMenu(false)} className="block px-4 py-2.5 text-[13px] text-red-400/80 hover:bg-white/[0.04] hover:text-red-400 transition-colors">
                     Sign Out
                   </Link>
                 </div>

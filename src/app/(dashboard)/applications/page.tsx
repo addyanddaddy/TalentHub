@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { BriefcaseIcon } from "@heroicons/react/24/outline";
 
-const statusColors: Record<string, "default" | "primary" | "success" | "warning" | "danger"> = {
-  SUBMITTED: "primary",
-  UNDER_REVIEW: "warning",
-  SHORTLISTED: "success",
-  REJECTED: "danger",
-  WITHDRAWN: "default",
+const statusConfig: Record<string, { label: string; bgClass: string; textClass: string; step: number }> = {
+  SUBMITTED: { label: "Submitted", bgClass: "bg-blue-500/15", textClass: "text-blue-400", step: 1 },
+  UNDER_REVIEW: { label: "Under Review", bgClass: "bg-amber-500/15", textClass: "text-amber-400", step: 2 },
+  SHORTLISTED: { label: "Shortlisted", bgClass: "bg-emerald-500/15", textClass: "text-emerald-400", step: 3 },
+  REJECTED: { label: "Rejected", bgClass: "bg-red-500/15", textClass: "text-red-400", step: 0 },
+  WITHDRAWN: { label: "Withdrawn", bgClass: "bg-white/[0.06]", textClass: "text-[#6b6b78]", step: 0 },
 };
+
+const progressSteps = ["Submitted", "Under Review", "Shortlisted"];
 
 const sampleApplications = [
   { id: 1, role: "Director of Photography", project: "Midnight Runner", status: "UNDER_REVIEW", appliedDate: "Mar 5, 2026", rate: "$800/day" },
@@ -22,39 +22,103 @@ const sampleApplications = [
 
 export default function ApplicationsPage() {
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="max-w-4xl mx-auto space-y-10 animate-fade-in py-4">
+      {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-navy-100">My Applications</h1>
-        <p className="text-sm text-navy-200 mt-1">Track your job applications and their status.</p>
+        <h1 className="text-2xl font-light text-[#edebe2] tracking-tight">My Applications</h1>
+        <p className="text-[13px] text-[#8a8a96] mt-2 tracking-wide">Track your job applications and their status.</p>
       </div>
 
       {sampleApplications.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-navy-700 bg-navy-900/30 p-16 text-center">
-          <BriefcaseIcon className="h-12 w-12 text-zinc-700 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-white mb-2">No applications yet</h3>
-          <p className="text-sm text-navy-300 mb-6">Browse open requisitions and casting breakdowns to apply.</p>
+        <div className="rounded-2xl border border-dashed border-white/[0.08] bg-[#0f0f14]/50 p-16 text-center">
+          <BriefcaseIcon className="h-12 w-12 text-[#6b6b78] mx-auto mb-4" />
+          <h3 className="text-lg font-light text-[#edebe2] mb-2">No applications yet</h3>
+          <p className="text-[13px] text-[#6b6b78] mb-8">Browse open requisitions and casting breakdowns to apply.</p>
           <Button onClick={() => window.location.href = "/discover"}>Browse Opportunities</Button>
         </div>
       ) : (
-        <div className="space-y-3">
-          {sampleApplications.map((app) => (
-            <Card key={app.id} variant="interactive" className="p-5">
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-base font-semibold text-white">{app.role}</h3>
-                    <Badge variant={statusColors[app.status] || "default"} size="sm">{app.status.replace("_", " ")}</Badge>
+        <div className="space-y-4">
+          {sampleApplications.map((app) => {
+            const config = statusConfig[app.status] || statusConfig.SUBMITTED;
+            const isTerminal = app.status === "REJECTED" || app.status === "WITHDRAWN";
+
+            return (
+              <div key={app.id} className="bg-[#1a1a22] rounded-2xl border border-white/[0.08] overflow-hidden group hover:border-white/[0.12] transition-colors">
+                <div className="p-6">
+                  <div className="flex items-start justify-between">
+                    {/* Left: project and role info */}
+                    <div className="space-y-3">
+                      {/* Role + badge */}
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-[15px] font-light text-[#edebe2]">{app.role}</h3>
+                        <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium tracking-wide ${config.bgClass} ${config.textClass}`}>
+                          {config.label}
+                        </span>
+                      </div>
+
+                      {/* Project name */}
+                      <p className="text-[14px] font-medium text-[#9d7663]">{app.project}</p>
+
+                      {/* Meta row */}
+                      <div className="flex items-center gap-4 text-[12px] text-[#6b6b78]">
+                        <span>Applied {app.appliedDate}</span>
+                        <span className="w-px h-3 bg-white/[0.08]" />
+                        <span>{app.rate}</span>
+                      </div>
+                    </div>
+
+                    {/* Right: View button */}
+                    <button className="text-[13px] font-medium text-[#9d7663] hover:text-[#c4a47a] transition-colors">
+                      View Details
+                    </button>
                   </div>
-                  <p className="text-sm text-accent mt-0.5">{app.project}</p>
-                  <div className="flex items-center gap-3 mt-2 text-xs text-navy-300">
-                    <span>Applied {app.appliedDate}</span>
-                    <span>{app.rate}</span>
-                  </div>
+
+                  {/* Status progression timeline */}
+                  {!isTerminal && (
+                    <div className="mt-6 pt-5 border-t border-white/[0.06]">
+                      <div className="flex items-center gap-0">
+                        {progressSteps.map((step, i) => {
+                          const isCompleted = config.step > i + 1;
+                          const isCurrent = config.step === i + 1;
+                          return (
+                            <div key={step} className="flex items-center flex-1">
+                              <div className="flex items-center gap-2">
+                                <div
+                                  className={`h-2 w-2 rounded-full transition-colors ${
+                                    isCompleted
+                                      ? "bg-[#9d7663]"
+                                      : isCurrent
+                                      ? "bg-[#c4a47a] ring-4 ring-[#c4a47a]/10"
+                                      : "bg-white/[0.08]"
+                                  }`}
+                                />
+                                <span
+                                  className={`text-[11px] tracking-wide ${
+                                    isCompleted || isCurrent
+                                      ? "text-[#b8b5a8] font-medium"
+                                      : "text-[#6b6b78]"
+                                  }`}
+                                >
+                                  {step}
+                                </span>
+                              </div>
+                              {i < progressSteps.length - 1 && (
+                                <div
+                                  className={`flex-1 h-px mx-3 ${
+                                    isCompleted ? "bg-[#9d7663]/40" : "bg-white/[0.06]"
+                                  }`}
+                                />
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <Button variant="outline" size="sm">View Details</Button>
               </div>
-            </Card>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

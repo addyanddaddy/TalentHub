@@ -76,19 +76,19 @@ export default function MessagesPage() {
   const selectedConversation = sampleConversations.find((c) => c.id === selectedConvo);
 
   return (
-    <div className="flex h-[calc(100vh-7rem)] animate-fade-in rounded-xl border border-navy-700 overflow-hidden">
+    <div className="flex h-[calc(100vh-7rem)] animate-fade-in rounded-2xl border border-white/[0.08] overflow-hidden">
       {/* Conversation list */}
-      <div className="w-80 border-r border-navy-700 flex flex-col bg-navy-900/50">
-        <div className="p-4 border-b border-navy-700">
-          <h2 className="text-base font-semibold text-white mb-3">Messages</h2>
+      <div className="w-80 border-r border-white/[0.08] flex flex-col bg-[#0f0f14]">
+        <div className="p-5 border-b border-white/[0.08]">
+          <h2 className="text-lg font-light text-[#edebe2] mb-4 tracking-tight">Messages</h2>
           <div className="relative">
-            <MagnifyingGlassIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-navy-300" />
+            <MagnifyingGlassIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#8a8a96]" />
             <input
               type="text"
               placeholder="Search conversations..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-lg border border-navy-600 bg-navy-700 pl-9 pr-3 py-2 text-sm text-white placeholder-navy-300 focus:border-accent focus:outline-none"
+              className="w-full rounded-full border border-white/[0.08] bg-white/[0.04] pl-10 pr-4 py-2.5 text-sm text-[#edebe2] placeholder-[#6b6b78] focus:border-[#9d7663]/40 focus:outline-none transition-colors"
             />
           </div>
         </div>
@@ -98,25 +98,27 @@ export default function MessagesPage() {
             <button
               key={convo.id}
               onClick={() => setSelectedConvo(convo.id)}
-              className={`w-full flex items-start gap-3 p-4 text-left hover:bg-navy-700/50 transition-colors ${
-                selectedConvo === convo.id ? "bg-navy-700/80" : ""
+              className={`w-full flex items-start gap-3.5 px-5 py-4 text-left transition-colors border-b border-white/[0.04] ${
+                selectedConvo === convo.id
+                  ? "bg-white/[0.04]"
+                  : "hover:bg-white/[0.02]"
               }`}
             >
-              <div className="relative">
+              <div className="relative mt-0.5">
                 <Avatar name={convo.otherUser.name} size="md" />
                 {convo.unreadCount > 0 && (
-                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-white">
+                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#9d7663] text-[10px] font-bold text-white">
                     {convo.unreadCount}
                   </span>
                 )}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-white truncate">{convo.otherUser.name}</span>
-                  <span className="text-[10px] text-navy-300 shrink-0">{convo.lastMessage.createdAt}</span>
+                  <span className="text-sm font-normal text-[#edebe2] truncate">{convo.otherUser.name}</span>
+                  <span className="text-[11px] text-[#8a8a96] shrink-0 ml-2">{convo.lastMessage.createdAt}</span>
                 </div>
-                <p className="text-xs text-accent">{convo.otherUser.role}</p>
-                <p className={`text-xs mt-0.5 truncate ${convo.unreadCount > 0 ? "text-navy-100 font-medium" : "text-navy-300"}`}>
+                <p className="text-[11px] text-[#9d7663] mt-0.5">{convo.otherUser.role}</p>
+                <p className={`text-xs mt-1 truncate leading-relaxed ${convo.unreadCount > 0 ? "text-[#b8b5a8] font-medium" : "text-[#6b6b78]"}`}>
                   {convo.lastMessage.content}
                 </p>
               </div>
@@ -127,29 +129,29 @@ export default function MessagesPage() {
 
       {/* Message area */}
       {selectedConversation ? (
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col bg-[#1a1a22]">
           {/* Header */}
-          <div className="flex items-center gap-3 p-4 border-b border-navy-700">
+          <div className="flex items-center gap-4 px-6 py-4 border-b border-white/[0.08] bg-[#1a1a22]">
             <Avatar name={selectedConversation.otherUser.name} size="md" />
             <div>
-              <p className="text-sm font-semibold text-white">{selectedConversation.otherUser.name}</p>
-              <Badge variant="default" size="sm">{selectedConversation.otherUser.role}</Badge>
+              <p className="text-sm font-normal text-[#edebe2]">{selectedConversation.otherUser.name}</p>
+              <p className="text-[11px] text-[#9d7663] mt-0.5">{selectedConversation.otherUser.role}</p>
             </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="flex-1 overflow-y-auto px-6 py-6 space-y-5">
             {messages.map((msg) => {
               const isMe = msg.senderId === "me";
               return (
                 <div key={msg.id} className={`flex ${isMe ? "justify-end" : "justify-start"}`}>
-                  <div className={`max-w-[70%] rounded-2xl px-4 py-2.5 ${
+                  <div className={`max-w-[70%] rounded-2xl px-5 py-3 ${
                     isMe
-                      ? "bg-accent text-white rounded-br-md"
-                      : "bg-navy-700 text-zinc-200 rounded-bl-md"
+                      ? "bg-[#9d7663]/20 text-[#edebe2] rounded-br-lg"
+                      : "bg-[#242430] text-[#edebe2] rounded-bl-lg"
                   }`}>
                     <p className="text-sm leading-relaxed">{msg.content}</p>
-                    <p className={`text-[10px] mt-1 ${isMe ? "text-accent-light" : "text-navy-300"}`}>{msg.createdAt}</p>
+                    <p className="text-[11px] text-[#8a8a96] mt-1.5">{msg.createdAt}</p>
                   </div>
                 </div>
               );
@@ -158,32 +160,31 @@ export default function MessagesPage() {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-navy-700">
-            <div className="flex items-end gap-2">
-              <textarea
+          <div className="px-6 py-4 border-t border-white/[0.08]">
+            <div className="flex items-end gap-3">
+              <input
+                type="text"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Type a message..."
-                className="flex-1 rounded-xl border border-navy-600 bg-navy-700 px-4 py-2.5 text-sm text-white placeholder-navy-300 focus:border-accent focus:outline-none resize-none max-h-32"
-                rows={1}
+                className="flex-1 rounded-full border border-white/[0.08] bg-white/[0.04] px-5 py-3 text-sm text-[#edebe2] placeholder-[#6b6b78] focus:border-[#9d7663]/40 focus:outline-none transition-colors"
               />
-              <Button
-                size="md"
+              <button
                 onClick={handleSend}
                 disabled={!newMessage.trim()}
-                className="rounded-xl"
+                className="flex items-center justify-center h-11 w-11 rounded-full bg-[#9d7663] text-white hover:bg-[#9d7663]/80 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shrink-0"
               >
                 <PaperAirplaneIcon className="h-4 w-4" />
-              </Button>
+              </button>
             </div>
           </div>
         </div>
       ) : (
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center bg-[#1a1a22]">
           <div className="text-center">
-            <ChatBubbleLeftRightIcon className="h-12 w-12 text-zinc-700 mx-auto mb-3" />
-            <p className="text-sm text-navy-300">Select a conversation to start messaging</p>
+            <ChatBubbleLeftRightIcon className="h-12 w-12 text-[#2f2f3d] mx-auto mb-4" />
+            <p className="text-sm text-[#6b6b78]">Select a conversation to start messaging</p>
           </div>
         </div>
       )}

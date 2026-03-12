@@ -12,9 +12,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const inputId = id || label?.toLowerCase().replace(/\s+/g, "-");
 
     return (
-      <div className="space-y-1.5">
+      <div className="space-y-2">
         {label && (
-          <label htmlFor={inputId} className="block text-sm font-medium text-navy-100">
+          <label htmlFor={inputId} className="block text-[13px] font-medium text-marble-400 tracking-wide">
             {label}
           </label>
         )}
@@ -22,17 +22,17 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "w-full rounded-lg border bg-navy-700 px-3 py-2.5 text-sm text-white placeholder-navy-300",
-            "border-navy-600 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none",
-            "disabled:opacity-50 disabled:cursor-not-allowed",
-            "transition-colors",
-            error && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+            "w-full rounded-xl bg-white/[0.04] px-4 py-3 text-sm text-marble placeholder:text-marble-500",
+            "border border-white/[0.08] focus:border-bronze/50 focus:ring-2 focus:ring-bronze/20 focus:outline-none",
+            "disabled:opacity-40 disabled:cursor-not-allowed",
+            "transition-colors duration-200",
+            error && "border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20",
             className
           )}
           {...props}
         />
         {error && <p className="text-xs text-red-400">{error}</p>}
-        {helperText && !error && <p className="text-xs text-navy-300">{helperText}</p>}
+        {helperText && !error && <p className="text-xs text-muted">{helperText}</p>}
       </div>
     );
   }
@@ -50,9 +50,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     const inputId = id || label?.toLowerCase().replace(/\s+/g, "-");
 
     return (
-      <div className="space-y-1.5">
+      <div className="space-y-2">
         {label && (
-          <label htmlFor={inputId} className="block text-sm font-medium text-navy-100">
+          <label htmlFor={inputId} className="block text-[13px] font-medium text-marble-400 tracking-wide">
             {label}
           </label>
         )}
@@ -60,11 +60,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           id={inputId}
           className={cn(
-            "w-full rounded-lg border bg-navy-700 px-3 py-2.5 text-sm text-white placeholder-navy-300",
-            "border-navy-600 focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none",
-            "disabled:opacity-50 disabled:cursor-not-allowed min-h-[80px] resize-y",
-            "transition-colors",
-            error && "border-red-500 focus:border-red-500 focus:ring-red-500/20",
+            "w-full rounded-xl bg-white/[0.04] px-4 py-3 text-sm text-marble placeholder:text-marble-500",
+            "border border-white/[0.08] focus:border-bronze/50 focus:ring-2 focus:ring-bronze/20 focus:outline-none",
+            "disabled:opacity-40 disabled:cursor-not-allowed min-h-[80px] resize-y",
+            "transition-colors duration-200",
+            error && "border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20",
             className
           )}
           {...props}

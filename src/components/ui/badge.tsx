@@ -2,17 +2,18 @@ import { type HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const variants = {
-  default: "bg-navy-600 text-white border border-navy-500/40",
-  primary: "bg-accent/20 text-accent border border-accent/30",
-  success: "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30",
-  warning: "bg-amber-500/20 text-amber-400 border border-amber-500/30",
-  danger: "bg-red-500/20 text-red-400 border border-red-500/30",
-  gold: "bg-gradient-to-r from-amber-500/20 to-yellow-500/20 text-amber-300 border border-amber-500/30",
+  default: "bg-white/[0.06] text-marble-400",
+  primary: "bg-bronze/15 text-bronze-300",
+  success: "bg-emerald-500/15 text-emerald-400",
+  warning: "bg-amber-500/15 text-amber-400",
+  danger: "bg-red-500/15 text-red-400",
+  gold: "bg-bronze/15 text-bronze-300",
+  teal: "bg-teal/15 text-teal-dark",
 };
 
 const sizes = {
-  sm: "px-1.5 py-0.5 text-[10px]",
-  md: "px-2.5 py-1 text-xs",
+  sm: "px-2 py-0.5 text-[10px]",
+  md: "px-2.5 py-0.5 text-[11px]",
 };
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
@@ -24,7 +25,7 @@ export function Badge({ className, variant = "default", size = "md", ...props }:
   return (
     <span
       className={cn(
-        "inline-flex items-center font-medium rounded-full whitespace-nowrap",
+        "inline-flex items-center font-medium tracking-wide rounded-full whitespace-nowrap",
         variants[variant],
         sizes[size],
         className
@@ -39,7 +40,7 @@ export function StatusDot({ status }: { status: "available" | "hold" | "booked" 
     available: "bg-emerald-500",
     hold: "bg-amber-500",
     booked: "bg-red-500",
-    offline: "bg-zinc-600",
+    offline: "bg-navy-200",
   };
 
   return (

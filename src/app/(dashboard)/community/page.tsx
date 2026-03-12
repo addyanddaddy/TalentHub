@@ -81,9 +81,9 @@ const samplePosts = [
 ];
 
 const postTypeIcons: Record<string, React.ReactNode> = {
-  announcement: <MegaphoneIcon className="h-4 w-4 text-amber-400" />,
+  announcement: <MegaphoneIcon className="h-4 w-4 text-[#c4a47a]" />,
   welcome: <UserPlusIcon className="h-4 w-4 text-emerald-400" />,
-  job_alert: <SparklesIcon className="h-4 w-4 text-accent" />,
+  job_alert: <SparklesIcon className="h-4 w-4 text-[#9d7663]" />,
 };
 
 export default function CommunityPage() {
@@ -146,27 +146,30 @@ export default function CommunityPage() {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in max-w-2xl mx-auto">
-      <div>
-        <h1 className="text-2xl font-bold text-navy-100">Community</h1>
-        <p className="text-sm text-navy-200 mt-1">News, updates, and conversations from the FrameOne network.</p>
+    <div className="space-y-8 animate-fade-in max-w-2xl mx-auto py-4">
+      {/* Page header */}
+      <div className="px-1">
+        <h1 className="text-3xl font-light tracking-tight text-[#edebe2]">Community</h1>
+        <p className="text-sm text-[#8a8a96] mt-2 leading-relaxed">
+          News, updates, and conversations from the FrameOne network.
+        </p>
       </div>
 
       {/* New post composer */}
-      <Card className="p-5">
-        <div className="flex gap-3">
+      <div className="bg-[#1a1a22] rounded-2xl p-6 border border-white/[0.08]">
+        <div className="flex gap-4">
           <Avatar name={session?.user?.name || "User"} src={session?.user?.image} size="md" />
           <div className="flex-1">
             <textarea
               value={newPost}
               onChange={(e) => setNewPost(e.target.value)}
               placeholder="Share an update, ask a question, or post about your latest project..."
-              className="w-full bg-transparent text-sm text-white placeholder-navy-300 resize-none outline-none min-h-[60px]"
+              className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl text-sm text-[#edebe2] placeholder-[#6b6b78] resize-none outline-none min-h-[80px] p-4 focus:border-[#9d7663]/40 transition-colors"
               rows={3}
             />
 
             {showImageUpload && (
-              <div className="mt-3">
+              <div className="mt-4">
                 <FileUpload
                   type="image"
                   label=""
@@ -176,60 +179,60 @@ export default function CommunityPage() {
               </div>
             )}
 
-            <div className="flex items-center justify-between mt-3 pt-3 border-t border-navy-700">
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/[0.08]">
               <div className="flex gap-1">
                 <button
                   onClick={() => setShowImageUpload(!showImageUpload)}
-                  className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs text-navy-200 hover:bg-navy-700 hover:text-white transition-colors"
+                  className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs text-[#8a8a96] hover:bg-white/[0.04] hover:text-[#edebe2] transition-colors"
                 >
                   <PhotoIcon className="h-4 w-4" />
                   Photo
                 </button>
-                <button className="flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs text-navy-200 hover:bg-navy-700 hover:text-white transition-colors">
+                <button className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs text-[#8a8a96] hover:bg-white/[0.04] hover:text-[#edebe2] transition-colors">
                   <VideoCameraIcon className="h-4 w-4" />
                   Video
                 </button>
               </div>
-              <Button size="sm" onClick={handlePost} loading={posting} disabled={!newPost.trim()}>
+              <Button size="sm" onClick={handlePost} loading={posting} disabled={!newPost.trim()} className="rounded-full px-6">
                 Post
               </Button>
             </div>
           </div>
         </div>
-      </Card>
+      </div>
 
       {/* Feed */}
-      <div className="space-y-4">
+      <div className="space-y-5">
         {posts.map((post) => (
-          <Card key={post.id} className="p-5">
+          <div key={post.id} className="bg-[#1a1a22] rounded-2xl p-6 border border-white/[0.08]">
             {/* Post header */}
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3.5">
               <Avatar name={post.author.name} src={post.author.avatarUrl} size="md" />
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-semibold text-white">{post.author.name}</span>
-                  <Badge variant="default" size="sm">{post.author.role}</Badge>
+                <div className="flex items-center gap-2.5">
+                  <span className="text-sm font-normal text-[#edebe2]">{post.author.name}</span>
+                  <span className="text-[11px] text-[#9d7663] font-light">{post.author.role}</span>
                   {postTypeIcons[post.postType] && (
                     <span>{postTypeIcons[post.postType]}</span>
                   )}
                 </div>
-                <p className="text-xs text-navy-300">{post.createdAt}</p>
+                <p className="text-[11px] text-[#8a8a96] mt-0.5">{post.createdAt}</p>
               </div>
             </div>
 
             {/* Post content */}
-            <p className="mt-3 text-sm text-navy-100 leading-relaxed whitespace-pre-wrap">{post.content}</p>
+            <p className="mt-4 text-sm text-[#edebe2] leading-relaxed whitespace-pre-wrap">{post.content}</p>
 
             {/* New members welcome card */}
             {post.postType === "welcome" && (post as any).newMembers && (
-              <div className="mt-4 grid grid-cols-2 gap-2">
+              <div className="mt-5 grid grid-cols-2 gap-3">
                 {(post as any).newMembers.map((member: any) => (
-                  <div key={member.name} className="flex items-center gap-2.5 rounded-lg bg-navy-700/50 border border-navy-600/50 p-3">
+                  <div key={member.name} className="flex items-center gap-3 rounded-xl bg-white/[0.04] border border-white/[0.08] p-3.5">
                     <Avatar name={member.name} size="sm" />
                     <div className="min-w-0">
-                      <p className="text-xs font-semibold text-white truncate">{member.name}</p>
-                      <p className="text-[10px] text-accent truncate">{member.role}</p>
-                      <p className="text-[10px] text-navy-300 truncate">{member.city}</p>
+                      <p className="text-xs font-normal text-[#edebe2] truncate">{member.name}</p>
+                      <p className="text-[11px] text-[#9d7663] truncate">{member.role}</p>
+                      <p className="text-[10px] text-[#8a8a96] truncate">{member.city}</p>
                     </div>
                   </div>
                 ))}
@@ -237,10 +240,10 @@ export default function CommunityPage() {
             )}
 
             {/* Post actions */}
-            <div className="flex items-center gap-6 mt-4 pt-3 border-t border-navy-700/50">
+            <div className="flex items-center gap-8 mt-5 pt-4 border-t border-white/[0.08]">
               <button
                 onClick={() => toggleLike(post.id)}
-                className="flex items-center gap-1.5 text-xs text-navy-200 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-xs text-[#8a8a96] hover:text-[#edebe2] transition-colors"
               >
                 {post.liked ? (
                   <HeartSolidIcon className="h-4 w-4 text-red-500" />
@@ -249,16 +252,16 @@ export default function CommunityPage() {
                 )}
                 {post.likesCount}
               </button>
-              <button className="flex items-center gap-1.5 text-xs text-navy-200 hover:text-white transition-colors">
+              <button className="flex items-center gap-2 text-xs text-[#8a8a96] hover:text-[#edebe2] transition-colors">
                 <ChatBubbleLeftIcon className="h-4 w-4" />
                 {post.commentsCount}
               </button>
-              <button className="flex items-center gap-1.5 text-xs text-navy-200 hover:text-white transition-colors">
+              <button className="flex items-center gap-2 text-xs text-[#8a8a96] hover:text-[#edebe2] transition-colors">
                 <ShareIcon className="h-4 w-4" />
                 Share
               </button>
             </div>
-          </Card>
+          </div>
         ))}
       </div>
     </div>

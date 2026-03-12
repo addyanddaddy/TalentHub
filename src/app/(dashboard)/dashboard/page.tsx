@@ -12,10 +12,10 @@ import {
 } from "@heroicons/react/24/outline";
 
 const statCards = [
-  { label: "Active Projects", value: "—", icon: FilmIcon, color: "text-accent bg-accent/15" },
-  { label: "Open Applications", value: "—", icon: BriefcaseIcon, color: "text-amber-400 bg-amber-400/10" },
-  { label: "Profile Views", value: "—", icon: ArrowTrendingUpIcon, color: "text-emerald-400 bg-emerald-400/10" },
-  { label: "Endorsements", value: "—", icon: HandThumbUpIcon, color: "text-sky-300 bg-sky-400/10" },
+  { label: "Active Projects", value: "—", icon: FilmIcon, accent: "text-[#9d7663]" },
+  { label: "Open Applications", value: "—", icon: BriefcaseIcon, accent: "text-[#c4a47a]" },
+  { label: "Profile Views", value: "—", icon: ArrowTrendingUpIcon, accent: "text-[#9d7663]" },
+  { label: "Endorsements", value: "—", icon: HandThumbUpIcon, accent: "text-[#c4a47a]" },
 ];
 
 const quickActions = [
@@ -31,16 +31,17 @@ export default async function DashboardPage() {
   const roles = (session?.user as any)?.roleProfiles || [];
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-10 px-2 py-4 animate-fade-in">
       {/* Welcome */}
-      <div>
-        <h1 className="text-2xl font-bold text-navy-100">Welcome back, {userName}</h1>
-        <p className="text-sm text-navy-200 mt-1">Here&apos;s what&apos;s happening across your productions.</p>
+      <div className="pt-4">
+        <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-3">Dashboard</p>
+        <h1 className="text-3xl font-light text-[#edebe2]">Welcome back, {userName}</h1>
+        <p className="text-sm text-[#8a8a96] mt-2 font-light">Here&apos;s what&apos;s happening across your productions.</p>
         {roles.length > 0 && (
-          <div className="flex gap-2 mt-3 flex-wrap">
+          <div className="flex gap-2 mt-5 flex-wrap">
             {roles.map((rp: any) => (
-              <span key={rp.id} className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/20 px-3 py-1 text-xs font-medium text-accent">
-                <StarIcon className="h-3 w-3" />
+              <span key={rp.id} className="inline-flex items-center gap-1.5 rounded-full bg-[#9d7663]/10 px-3.5 py-1.5 text-xs font-medium text-[#c4a47a]">
+                <StarIcon className="h-3 w-3 text-[#9d7663]" />
                 {rp.roleName}
               </span>
             ))}
@@ -49,33 +50,34 @@ export default async function DashboardPage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
-        {statCards.map((stat) => (
-          <div key={stat.label} className="rounded-xl border border-navy-700 bg-navy-900/50 p-5">
-            <div className="flex items-center justify-between">
-              <p className="text-sm text-navy-200">{stat.label}</p>
-              <div className={`rounded-lg p-2 ${stat.color}`}>
-                <stat.icon className="h-4 w-4" />
+      <div>
+        <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-5">Overview</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger-children">
+          {statCards.map((stat) => (
+            <div key={stat.label} className="rounded-2xl bg-[#1a1a22] p-6">
+              <div className="flex items-center justify-between">
+                <p className="text-xs uppercase tracking-[0.15em] text-[#8a8a96] font-medium">{stat.label}</p>
+                <stat.icon className={`h-4 w-4 ${stat.accent} opacity-60`} strokeWidth={1.5} />
               </div>
+              <p className="mt-4 text-3xl font-semibold bg-gradient-to-r from-[#9d7663] to-[#c4a47a] bg-clip-text text-transparent">{stat.value}</p>
             </div>
-            <p className="mt-3 text-2xl font-bold text-white">{stat.value}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Quick Actions */}
       <div>
-        <h2 className="text-lg font-semibold text-navy-100 mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 stagger-children">
+        <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-5">Quick Actions</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 stagger-children">
           {quickActions.map((action) => (
             <Link
               key={action.label}
               href={action.href}
-              className="group rounded-xl border border-navy-700 bg-navy-900/50 p-5 hover:border-accent/50 hover:bg-accent/5 transition-all"
+              className="group rounded-2xl bg-[#1a1a22] p-6 hover:bg-[#242430] transition-all duration-300"
             >
-              <action.icon className="h-6 w-6 text-navy-300 group-hover:text-accent transition-colors mb-3" />
-              <h3 className="text-sm font-semibold text-white group-hover:text-accent transition-colors">{action.label}</h3>
-              <p className="text-xs text-navy-300 mt-1">{action.description}</p>
+              <action.icon className="h-5 w-5 text-[#8a8a96] group-hover:text-[#9d7663] transition-colors duration-300 mb-4" strokeWidth={1.5} />
+              <h3 className="text-sm font-normal text-[#edebe2] group-hover:text-[#c4a47a] transition-colors duration-300">{action.label}</h3>
+              <p className="text-xs text-[#6b6b78] mt-1.5 font-light leading-relaxed">{action.description}</p>
             </Link>
           ))}
         </div>
@@ -83,9 +85,9 @@ export default async function DashboardPage() {
 
       {/* Recent Activity */}
       <div>
-        <h2 className="text-lg font-semibold text-navy-100 mb-4">Recent Activity</h2>
-        <div className="rounded-xl border border-navy-700 bg-navy-900/50 p-8 text-center">
-          <p className="text-sm text-navy-300">No recent activity yet. Start by completing your profile or browsing projects.</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-[#8a8a96] mb-5">Recent Activity</p>
+        <div className="rounded-2xl bg-[#1a1a22] p-10 text-center">
+          <p className="text-sm text-[#6b6b78] font-light">No recent activity yet. Start by completing your profile or browsing projects.</p>
         </div>
       </div>
     </div>

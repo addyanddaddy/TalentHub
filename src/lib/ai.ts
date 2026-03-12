@@ -333,6 +333,59 @@ Return valid JSON:
 }
 
 // ─────────────────────────────────────────────
+// PRE-SCREEN QUESTIONS: Suggest relevant questions
+// ─────────────────────────────────────────────
+
+export async function suggestPreScreenQuestions(roleSlug: string, description: string) {
+  const message = await anthropic.messages.create({
+    model: "claude-sonnet-4-20250514",
+    max_tokens: 1000,
+    messages: [
+      {
+        role: "user",
+        content: `You are an AI assistant for FrameOne, an entertainment industry hiring platform.
+
+A hiring manager is creating a pre-screen questionnaire for candidates applying to a position.
+
+Role: ${roleSlug}
+Job Description: "${description}"
+
+Suggest 5-8 relevant pre-screen questions that would help evaluate candidates before an interview or audition. Questions should be specific to the entertainment industry and this role.
+
+For each question, specify the type:
+- "text" for open-ended questions
+- "yes_no" for yes/no questions
+- "multiple_choice" for questions with predefined options (include the options)
+
+Return valid JSON:
+{
+  "questions": [
+    { "question": "...", "questionType": "text" },
+    { "question": "...", "questionType": "yes_no" },
+    { "question": "...", "questionType": "multiple_choice", "options": ["Option A", "Option B", "Option C"] }
+  ]
+}
+
+Only return the JSON, nothing else.`,
+      },
+    ],
+  });
+
+  try {
+    const content = message.content[0];
+    if (content.type === "text") {
+      const jsonMatch = content.text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        return JSON.parse(jsonMatch[0]);
+      }
+    }
+    return { questions: [] };
+  } catch {
+    return { questions: [] };
+  }
+}
+
+// ─────────────────────────────────────────────
 // ROLE SUGGESTION: Suggest roles during onboarding
 // ─────────────────────────────────────────────
 

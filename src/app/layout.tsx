@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
+});
 
 export const metadata: Metadata = {
   title: "FrameOne | Entertainment Industry Professional Network",
@@ -13,13 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.bunny.net" />
-        <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
-      </head>
-      <body className="bg-navy-950 text-navy-100 antialiased" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <html lang="en" className={`dark ${plusJakartaSans.variable}`}>
+      <body className={`${plusJakartaSans.className} bg-surface-900 text-marble antialiased`}>
         <Providers>{children}</Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

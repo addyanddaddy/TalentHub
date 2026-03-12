@@ -183,33 +183,33 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  accounts          Account[]
-  roleProfiles      RoleProfile[]
-  auditEvents       AuditEvent[]
-  createdRequisitions Requisition[]    @relation("RequisitionCreator")
-  createdBreakdowns Breakdown[]        @relation("BreakdownCreator")
-  submittedInvoices Invoice[]          @relation("InvoiceSubmitter")
-  approvedInvoices  Invoice[]          @relation("InvoiceApprover")
-  uploadedDocuments Document[]
-  posts             Post[]             @relation("UserPosts")
-  comments          Comment[]          @relation("UserComments")
-  sentMessages      Message[]          @relation("SentMessages")
-  receivedMessages  Message[]          @relation("ReceivedMessages")
-  conversationsA    Conversation[]     @relation("ConversationsA")
-  conversationsB    Conversation[]     @relation("ConversationsB")
+  accounts            Account[]
+  roleProfiles        RoleProfile[]
+  auditEvents         AuditEvent[]
+  createdRequisitions Requisition[]  @relation("RequisitionCreator")
+  createdBreakdowns   Breakdown[]    @relation("BreakdownCreator")
+  submittedInvoices   Invoice[]      @relation("InvoiceSubmitter")
+  approvedInvoices    Invoice[]      @relation("InvoiceApprover")
+  uploadedDocuments   Document[]
+  posts               Post[]         @relation("UserPosts")
+  comments            Comment[]      @relation("UserComments")
+  sentMessages        Message[]      @relation("SentMessages")
+  receivedMessages    Message[]      @relation("ReceivedMessages")
+  conversationsA      Conversation[] @relation("ConversationsA")
+  conversationsB      Conversation[] @relation("ConversationsB")
 
   @@index([email])
 }
 
 model Account {
-  id                String      @id @default(cuid())
-  type              AccountType @default(INDIVIDUAL)
-  name              String
+  id                 String      @id @default(cuid())
+  type               AccountType @default(INDIVIDUAL)
+  name               String
   billingOwnerUserId String
-  stripeCustomerId  String?
-  stripeAccountId   String?     // Stripe Connect account for payouts
-  createdAt         DateTime    @default(now())
-  updatedAt         DateTime    @updatedAt
+  stripeCustomerId   String?
+  stripeAccountId    String? // Stripe Connect account for payouts
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
 
   billingOwner User         @relation(fields: [billingOwnerUserId], references: [id])
   memberships  Membership[]
@@ -221,16 +221,16 @@ model Account {
 }
 
 model Membership {
-  id                  String           @id @default(cuid())
-  accountId           String
-  tier                MembershipTier   @default(FREE)
-  status              MembershipStatus @default(ACTIVE)
+  id                   String           @id @default(cuid())
+  accountId            String
+  tier                 MembershipTier   @default(FREE)
+  status               MembershipStatus @default(ACTIVE)
   stripeSubscriptionId String?
-  currentPeriodStart  DateTime?
-  currentPeriodEnd    DateTime?
-  entitlements        Json?
-  createdAt           DateTime         @default(now())
-  updatedAt           DateTime         @updatedAt
+  currentPeriodStart   DateTime?
+  currentPeriodEnd     DateTime?
+  entitlements         Json?
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
 
   account Account @relation(fields: [accountId], references: [id])
 
@@ -265,7 +265,7 @@ model Role {
   isVendorRole    Boolean   @default(false)
   createdAt       DateTime  @default(now())
 
-  taxonomyGroup TaxonomyGroup   @relation(fields: [taxonomyGroupId], references: [id])
+  taxonomyGroup TaxonomyGroup       @relation(fields: [taxonomyGroupId], references: [id])
   roleProfiles  RoleProfile[]
   requisitions  Requisition[]
   assignments   ProjectAssignment[]
@@ -293,20 +293,20 @@ model RoleProfile {
   createdAt          DateTime           @default(now())
   updatedAt          DateTime           @updatedAt
 
-  user              User               @relation(fields: [userId], references: [id])
-  role              Role               @relation(fields: [roleId], references: [id])
-  profileFields     RoleProfileField[]
-  projectMembers    ProjectMember[]
-  projectAssignments ProjectAssignment[]
-  applications      Application[]
-  availability      Availability[]
-  givenEndorsements    Endorsement[]   @relation("EndorsementFrom")
-  receivedEndorsements Endorsement[]   @relation("EndorsementTo")
-  sentSubmissions   Submission[]
-  workedWithA       WorkedWithEdge[]   @relation("WorkedWithA")
-  workedWithB       WorkedWithEdge[]   @relation("WorkedWithB")
-  documentAccess    DocumentAccess[]
-  shortlistEntries  ShortlistEntry[]
+  user                 User                @relation(fields: [userId], references: [id])
+  role                 Role                @relation(fields: [roleId], references: [id])
+  profileFields        RoleProfileField[]
+  projectMembers       ProjectMember[]
+  projectAssignments   ProjectAssignment[]
+  applications         Application[]
+  availability         Availability[]
+  givenEndorsements    Endorsement[]       @relation("EndorsementFrom")
+  receivedEndorsements Endorsement[]       @relation("EndorsementTo")
+  sentSubmissions      Submission[]
+  workedWithA          WorkedWithEdge[]    @relation("WorkedWithA")
+  workedWithB          WorkedWithEdge[]    @relation("WorkedWithB")
+  documentAccess       DocumentAccess[]
+  shortlistEntries     ShortlistEntry[]
 
   @@unique([userId, roleId])
   @@index([userId])
@@ -333,31 +333,31 @@ model RoleProfileField {
 // ─────────────────────────────────────────────────
 
 model Project {
-  id              String            @id @default(cuid())
-  ownerAccountId  String
-  title           String
-  logline         String?
-  format          ProjectFormat     @default(FEATURE)
-  stage           ProjectStage      @default(DEVELOPMENT)
-  budgetBandMin   Decimal?
-  budgetBandMax   Decimal?
-  startDate       DateTime?
-  endDate         DateTime?
-  locations       Json?             // Array of { city, region, country }
-  visibility      ProjectVisibility @default(PRIVATE)
-  imageUrl        String?
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
+  id             String            @id @default(cuid())
+  ownerAccountId String
+  title          String
+  logline        String?
+  format         ProjectFormat     @default(FEATURE)
+  stage          ProjectStage      @default(DEVELOPMENT)
+  budgetBandMin  Decimal?
+  budgetBandMax  Decimal?
+  startDate      DateTime?
+  endDate        DateTime?
+  locations      Json? // Array of { city, region, country }
+  visibility     ProjectVisibility @default(PRIVATE)
+  imageUrl       String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
 
-  ownerAccount Account             @relation(fields: [ownerAccountId], references: [id])
-  members      ProjectMember[]
-  requisitions Requisition[]
-  assignments  ProjectAssignment[]
-  breakdowns   Breakdown[]
-  invoices     Invoice[]
-  documents    Document[]
+  ownerAccount    Account             @relation(fields: [ownerAccountId], references: [id])
+  members         ProjectMember[]
+  requisitions    Requisition[]
+  assignments     ProjectAssignment[]
+  breakdowns      Breakdown[]
+  invoices        Invoice[]
+  documents       Document[]
   workedWithEdges WorkedWithEdge[]
-  endorsements Endorsement[]
+  endorsements    Endorsement[]
 
   @@index([ownerAccountId])
   @@index([stage])
@@ -368,8 +368,8 @@ model ProjectMember {
   id             String   @id @default(cuid())
   projectId      String
   roleProfileId  String
-  permissionSet  Json?    // { canView, canEdit, canManage }
-  authorityFlags Json?    // { canHire, canApproveOffers, canApproveInvoices, canManageDocs }
+  permissionSet  Json? // { canView, canEdit, canManage }
+  authorityFlags Json? // { canHire, canApproveOffers, canApproveInvoices, canManageDocs }
   invitedBy      String?
   joinedAt       DateTime @default(now())
   createdAt      DateTime @default(now())
@@ -417,7 +417,7 @@ model Application {
   requisitionId String
   roleProfileId String
   coverNote     String?
-  materialsRefs Json?             // Array of URLs
+  materialsRefs Json? // Array of URLs
   status        ApplicationStatus @default(SUBMITTED)
   createdAt     DateTime          @default(now())
   updatedAt     DateTime          @updatedAt
@@ -439,8 +439,8 @@ model Offer {
   proposedRate  Decimal
   rateType      String        @default("DAILY")
   approvalState ApprovalState @default(PENDING)
-  approverIds   Json?         // Array of user IDs who need to approve
-  approvedBy    Json?         // Array of user IDs who have approved
+  approverIds   Json? // Array of user IDs who need to approve
+  approvedBy    Json? // Array of user IDs who have approved
   counterTerms  Json?
   status        OfferStatus   @default(PENDING)
   expiresAt     DateTime?
@@ -495,15 +495,15 @@ model Credit {
 // ─────────────────────────────────────────────────
 
 model WorkedWithEdge {
-  id             String   @id @default(cuid())
+  id             String    @id @default(cuid())
   projectId      String
   roleProfileAId String
   roleProfileBId String
-  roleContextA   String   // e.g. "Director"
-  roleContextB   String   // e.g. "DP"
+  roleContextA   String // e.g. "Director"
+  roleContextB   String // e.g. "DP"
   startDate      DateTime?
   endDate        DateTime?
-  createdAt      DateTime @default(now())
+  createdAt      DateTime  @default(now())
 
   project      Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
   roleProfileA RoleProfile @relation("WorkedWithA", fields: [roleProfileAId], references: [id])
@@ -521,7 +521,7 @@ model Endorsement {
   projectId         String?
   type              EndorsementType
   text              String?
-  rating            Int?            // 1-5
+  rating            Int? // 1-5
   createdAt         DateTime        @default(now())
 
   fromRoleProfile RoleProfile @relation("EndorsementFrom", fields: [fromRoleProfileId], references: [id])
@@ -542,7 +542,7 @@ model Availability {
   geoCity       String?
   geoRegion     String?
   geoCountry    String?
-  geoRadius     Int?               // miles
+  geoRadius     Int? // miles
   notes         String?
   createdAt     DateTime           @default(now())
   updatedAt     DateTime           @updatedAt
@@ -575,11 +575,12 @@ model Breakdown {
   createdAt          DateTime        @default(now())
   updatedAt          DateTime        @updatedAt
 
-  project          Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  createdBy        User             @relation("BreakdownCreator", fields: [createdById], references: [id])
+  project          Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdBy        User              @relation("BreakdownCreator", fields: [createdById], references: [id])
   submissions      Submission[]
   auditions        Audition[]
   shortlistEntries ShortlistEntry[]
+  selfTapeRequests SelfTapeRequest[]
 
   @@index([projectId, status])
   @@index([status])
@@ -595,10 +596,11 @@ model Submission {
   createdAt     DateTime         @default(now())
   updatedAt     DateTime         @updatedAt
 
-  breakdown   Breakdown        @relation(fields: [breakdownId], references: [id], onDelete: Cascade)
-  roleProfile RoleProfile      @relation(fields: [roleProfileId], references: [id])
-  auditions   Audition[]
-  shortlists  ShortlistEntry[]
+  breakdown        Breakdown         @relation(fields: [breakdownId], references: [id], onDelete: Cascade)
+  roleProfile      RoleProfile       @relation(fields: [roleProfileId], references: [id])
+  auditions        Audition[]
+  shortlists       ShortlistEntry[]
+  selfTapeRequests SelfTapeRequest[]
 
   @@unique([breakdownId, roleProfileId])
   @@index([breakdownId])
@@ -651,7 +653,7 @@ model Invoice {
   projectId         String
   vendorAccountId   String
   submittedByUserId String
-  lineItems         Json          // Array of { description, quantity, unitPrice, amount }
+  lineItems         Json // Array of { description, quantity, unitPrice, amount }
   amount            Decimal
   currency          String        @default("USD")
   status            InvoiceStatus @default(DRAFT)
@@ -702,7 +704,7 @@ model Document {
   id                   String                  @id @default(cuid())
   projectId            String
   uploadedByUserId     String
-  type                 String                  // e.g. "contract", "call_sheet", "sides", "nda"
+  type                 String // e.g. "contract", "call_sheet", "sides", "nda"
   fileName             String
   storageUri           String
   fileSize             Int
@@ -749,7 +751,7 @@ model Post {
   videoUrl    String?
   postType    String   @default("update") // update, announcement, job_alert, welcome, milestone
   visibility  String   @default("public") // public, connections, role_specific
-  targetRoles Json?    // Array of role slugs this post is visible to
+  targetRoles Json? // Array of role slugs this post is visible to
   likesCount  Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -777,12 +779,12 @@ model Comment {
 }
 
 model Message {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   senderId    String
   recipientId String
   content     String
   readAt      DateTime?
-  createdAt   DateTime @default(now())
+  createdAt   DateTime  @default(now())
 
   sender    User @relation("SentMessages", fields: [senderId], references: [id])
   recipient User @relation("ReceivedMessages", fields: [recipientId], references: [id])
@@ -815,9 +817,9 @@ model Conversation {
 model AuditEvent {
   id          String   @id @default(cuid())
   actorUserId String
-  entityType  String   // e.g. "project", "offer", "invoice"
+  entityType  String // e.g. "project", "offer", "invoice"
   entityId    String
-  action      String   // e.g. "created", "updated", "approved", "deleted"
+  action      String // e.g. "created", "updated", "approved", "deleted"
   metadata    Json?
   ipAddress   String?
   createdAt   DateTime @default(now())
@@ -827,4 +829,106 @@ model AuditEvent {
   @@index([actorUserId])
   @@index([entityType, entityId])
   @@index([createdAt])
+}
+
+// ─────────────────────────────────────────────────
+// SAVED SEARCHES
+// ─────────────────────────────────────────────────
+
+model SavedSearch {
+  id          String    @id @default(cuid())
+  userId      String
+  name        String
+  filters     Json // Structured search filters
+  alertFreq   String    @default("none") // none, instant, daily, weekly
+  lastAlertAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([alertFreq])
+}
+
+// ─────────────────────────────────────────────────
+// SELF-TAPE REQUESTS
+// ─────────────────────────────────────────────────
+
+model SelfTapeRequest {
+  id            String   @id @default(cuid())
+  breakdownId   String
+  submissionId  String
+  instructions  String
+  scriptSideUrl String?
+  deadline      DateTime
+  maxDuration   Int? // seconds
+  createdAt     DateTime @default(now())
+
+  breakdown  Breakdown  @relation(fields: [breakdownId], references: [id], onDelete: Cascade)
+  submission Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+
+  @@index([breakdownId])
+  @@index([submissionId])
+}
+
+// ─────────────────────────────────────────────────
+// PRE-SCREEN QUESTIONS
+// ─────────────────────────────────────────────────
+
+model PreScreenQuestion {
+  id            String   @id @default(cuid())
+  requisitionId String
+  question      String
+  questionType  String   @default("text") // text, yes_no, multiple_choice
+  options       Json? // For multiple choice
+  isRequired    Boolean  @default(true)
+  sortOrder     Int      @default(0)
+  createdAt     DateTime @default(now())
+
+  @@index([requisitionId])
+}
+
+model PreScreenAnswer {
+  id            String   @id @default(cuid())
+  questionId    String
+  applicationId String
+  answer        String
+  createdAt     DateTime @default(now())
+
+  @@index([questionId])
+  @@index([applicationId])
+}
+
+// ─────────────────────────────────────────────────
+// COLLABORATORS
+// ─────────────────────────────────────────────────
+
+model Collaborator {
+  id              String   @id @default(cuid())
+  projectId       String
+  userId          String
+  accessLevel     String   @default("shortlist_only") // full, shortlist_only
+  invitedByUserId String
+  createdAt       DateTime @default(now())
+
+  @@unique([projectId, userId])
+  @@index([projectId])
+  @@index([userId])
+}
+
+// ─────────────────────────────────────────────────
+// LISTING BOOSTS
+// ─────────────────────────────────────────────────
+
+model ListingBoost {
+  id            String   @id @default(cuid())
+  requisitionId String?
+  breakdownId   String?
+  boostType     String   @default("featured") // featured, spotlight, boost
+  startDate     DateTime @default(now())
+  endDate       DateTime
+  createdAt     DateTime @default(now())
+
+  @@index([requisitionId])
+  @@index([breakdownId])
+  @@index([endDate])
 }

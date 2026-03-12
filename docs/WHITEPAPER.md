@@ -3,7 +3,52 @@
 **Prepared for:** Ralph, Shahpoor & the FrameOne Founding Team
 **Prepared by:** Brandon Bible (Technical Lead)
 **Date:** March 9, 2026
-**Version:** 1.0
+**Version:** 2.0
+
+---
+
+> ### Document Update — March 12, 2026
+>
+> **Version 2.0** — The following updates have been made to this white paper:
+>
+> **AI-Powered Intelligence Layer (New Section 9)**
+> - Documented all 5 built-in AI features: Smart Match, Natural Language Search, Auto-Categorization, Crew Recommendations, and Role Suggestions
+> - All 5 AI features are fully built and functional, powered by Anthropic's Claude (claude-sonnet-4)
+> - AI costs are absorbed by the platform — not passed to users
+>
+> **✦ AI-Enhanced Markers Throughout**
+> - Inline "✦ AI-Enhanced" indicators added to every feature section that uses artificial intelligence
+> - Covers: Discover/Search, Hiring/Matching, Profile Onboarding, Crew Recommendations, Skill Extraction
+>
+> **Phase 2 Feature Roadmap (14 New Features Planned)**
+> - Self-Tape & Audition Management System
+> - Saved Searches with Smart Alerts (instant/daily/weekly)
+> - Collaborator Permissions (full vs. shortlist-only access)
+> - Bulk Actions (message, shortlist, reject multiple candidates)
+> - Applicant Pipeline Kanban (To Review → Shortlisted → Audition → Offer → Hired)
+> - Pre-Screen Questionnaires (custom questions per requisition)
+> - Geographic Radius Search (distance-based filtering)
+> - Content Creator Profiles (UGC, branded content, package pricing)
+> - Listing Boost / Featured Placement (paid visibility)
+> - Calendar Integration (Google Calendar / iCal sync)
+> - Physical Attributes & Voice Filters (height, hair, eye color, voice type)
+> - Script Sides & Document Sharing (attach to casting breakdowns)
+> - Native Portfolio & Reel Hosting (built-in video player)
+> - Exportable Shortlists (PDF/CSV for offline sharing)
+>
+> **Executive Summary & Competitive Landscape Updated**
+> - AI highlighted as a core platform differentiator
+> - FrameOne positioned as the first entertainment industry platform with production-aware AI
+>
+> **Complete UI/UX Redesign**
+> - Full design system overhaul: cinematic editorial aesthetic with Plus Jakarta Sans typography
+> - New color system: deep charcoal, marble/cream text, bronze accents
+> - All 17 pages and 8 UI components restyled
+>
+> **New Backend Infrastructure**
+> - 6 new database models added (SavedSearch, SelfTapeRequest, PreScreenQuestion, PreScreenAnswer, Collaborator, ListingBoost)
+> - 8 new API endpoints deployed
+> - 1 new AI function (AI-suggested pre-screen questions)
 
 ---
 
@@ -17,19 +62,21 @@
 6. [Complete Role Directory](#6-complete-role-directory)
 7. [Membership & Pricing](#7-membership--pricing)
 8. [Core Features Breakdown](#8-core-features-breakdown)
-9. [User Journeys](#9-user-journeys)
-10. [Payment System](#10-payment-system)
-11. [Trust & Reputation System](#11-trust--reputation-system)
-12. [Technical Architecture Overview](#12-technical-architecture-overview)
-13. [Site Map & Page Structure](#13-site-map--page-structure)
-14. [API Endpoints](#14-api-endpoints)
-15. [Database Structure](#15-database-structure)
-16. [Security & Privacy](#16-security--privacy)
-17. [Development Roadmap](#17-development-roadmap)
-18. [Access & Login Information](#18-access--login-information)
-19. [How to Deploy & Run](#19-how-to-deploy--run)
-20. [Competitive Landscape](#20-competitive-landscape)
-21. [Revenue Projections](#21-revenue-projections)
+9. [AI-Powered Intelligence Layer](#9-ai-powered-intelligence-layer)
+10. [User Journeys](#10-user-journeys)
+11. [Payment System](#11-payment-system)
+12. [Trust & Reputation System](#12-trust--reputation-system)
+13. [Technical Architecture Overview](#13-technical-architecture-overview)
+14. [Site Map & Page Structure](#14-site-map--page-structure)
+15. [API Endpoints](#15-api-endpoints)
+16. [Database Structure](#16-database-structure)
+17. [Security & Privacy](#17-security--privacy)
+18. [Development Roadmap](#18-development-roadmap)
+19. [Access & Login Information](#19-access--login-information)
+20. [How to Deploy & Run](#20-how-to-deploy--run)
+21. [Competitive Landscape](#21-competitive-landscape)
+22. [Revenue Projections](#22-revenue-projections)
+23. [AI Integration (Technical Detail)](#23-ai-integration-technical-detail)
 
 ---
 
@@ -53,6 +100,9 @@ FrameOne captures all of this in a platform that lets professionals:
 - **Run casting** with breakdowns, submissions, auditions, and shortlists
 - **Process payments** between productions and vendors
 - **Search and discover** talent by role, department, location, availability, and experience
+- **Leverage AI intelligence** to match candidates, parse natural language searches, and surface crew recommendations
+
+The platform's embedded AI intelligence layer — powered by Anthropic's Claude — transforms hiring from manual filtering into intelligent matching, making FrameOne the first entertainment industry platform with production-aware artificial intelligence.
 
 ### What We've Built
 
@@ -63,11 +113,12 @@ FrameOne captures all of this in a platform that lets professionals:
 | API endpoints | 24 |
 | User-facing pages | 7 |
 | UI components | 9 |
+| AI features (built & functional) | 5 |
 | Industry roles supported | 43 |
 | Department categories | 9 |
 | Membership tiers | 5 |
 
-The platform is built with **Next.js 14** (React), **TypeScript**, **PostgreSQL** (database), **Stripe Connect** (payments), and **Tailwind CSS** (styling). It is designed to scale to **30,000+ concurrent users**.
+The platform is built with **Next.js 14** (React), **TypeScript**, **PostgreSQL** (database), **Stripe Connect** (payments), **Anthropic Claude** (AI intelligence layer), and **Tailwind CSS** (styling). It is designed to scale to **30,000+ concurrent users**.
 
 ---
 
@@ -160,14 +211,16 @@ VISITOR
   │
   ├─→ ONBOARDING (4-step wizard)
   │     │
-  │     ├─ Step 1: CHOOSE ROLES
+  │     ├─ Step 1: CHOOSE ROLES ✦ AI-Enhanced — intelligent role suggestions from natural language
   │     │    - Browse 9 department groups
   │     │    - Select one or more roles (e.g., Director + Screenwriter)
   │     │    - Each role has a level badge (HOD, Key, Assistant, Trainee)
+  │     │    - Or: describe what you do in plain English and AI suggests your roles
   │     │
-  │     ├─ Step 2: BUILD PROFILES
+  │     ├─ Step 2: BUILD PROFILES ✦ AI-Enhanced — automatic skill extraction from bio
   │     │    - For each selected role, enter:
   │     │      Display name, bio, city, state, country
+  │     │    - AI auto-categorizes your bio into searchable skills, genres, and tools
   │     │    - (Later: portfolio URL, reel URL, resume)
   │     │
   │     ├─ Step 3: SELECT PLAN
@@ -205,6 +258,7 @@ PRODUCER creates a Project
   │
   ├─→ Each Department Head opens REQUISITIONS
   │     (role needed, dates, rate range, requirements)
+  │     ✦ AI-Enhanced — intelligent candidate ranking via Smart Match
   │
   ├─→ Crew members APPLY to requisitions
   │     (cover note, materials/reel links)
@@ -407,7 +461,7 @@ Revenue comes from the **demand side** — the people who hire. A Producer savin
 
 ### 8.1 Multi-Role Profiles
 
-Every user can maintain profiles across multiple roles. This is unique to FrameOne.
+Every user can maintain profiles across multiple roles. This is unique to FrameOne. ✦ AI-Enhanced — automatic skill extraction parses your bio into searchable tags for skills, genres, tools, and specialties.
 
 **Example:** Sarah is a Director of Photography on feature films but also works as a Camera Operator on commercials and teaches as a DIT on training films. On FrameOne, she has three role profiles:
 - **DP profile** — feature film reel, credits from major projects, endorsements from directors
@@ -431,7 +485,7 @@ Projects are the organizational unit for all hiring, casting, and payments.
 
 ### 8.3 Requisitions & Applications
 
-Within a project, authorized members post **Requisitions** — specific job openings.
+Within a project, authorized members post **Requisitions** — specific job openings. ✦ AI-Enhanced — intelligent candidate ranking scores and ranks top matches for every requisition.
 
 **A Requisition includes:**
 - Role (from the 43-role taxonomy)
@@ -466,12 +520,14 @@ For talent roles, the casting flow is separate and more nuanced:
 
 ### 8.6 Search & Discovery
 
-The Discover page lets anyone search across the entire platform:
+The Discover page lets anyone search across the entire platform. ✦ AI-Enhanced — natural language search powered by Claude. Type queries like "Looking for a DP in LA available in June" and AI parses it into structured database filters.
+
 - **By role/department** — "Show me all DPs in Atlanta"
 - **By availability** — "Who's available in March?"
 - **By location** — city, state, country, radius
 - **By experience level** — HOD, Key, Assistant, Trainee
 - **By keywords** — name, bio, skills
+- **By natural language** — type what you need in plain English and AI handles the rest
 
 Results show: avatar, name, primary role, location, availability status (green/yellow/red dot), credit count, endorsement count.
 
@@ -501,7 +557,107 @@ Documents have confidentiality levels: Public, Project Members, Restricted, Top 
 
 ---
 
-## 9. User Journeys
+## 9. AI-Powered Intelligence Layer
+
+FrameOne is the first entertainment industry platform with production-aware artificial intelligence built directly into its core workflows. The AI intelligence layer is not a roadmap item — it is **built and functional today**, powering five distinct features across hiring, search, profiles, networking, and onboarding.
+
+All AI features use **Anthropic's Claude** (model: `claude-sonnet-4-20250514`) via the standard Anthropic API. Cost is included in platform operating expenses and is not passed to users. At current API pricing, each AI call costs approximately $0.003 to $0.01, making the entire AI layer negligible relative to subscription revenue.
+
+---
+
+### 9.1 Smart Match — AI-Powered Candidate Ranking
+
+> **Status:** BUILT AND FUNCTIONAL | **Backend API:** `/api/ai/smart-match` | **AI Provider:** Anthropic Claude (`claude-sonnet-4-20250514`) | **Subscription:** Anthropic standard API pricing (pay-per-use, cost absorbed by platform) | **Tier:** Free tier deployed
+
+When a Producer or Department Head posts a job requisition, they can click **"Find Best Matches"** and the AI analyzes the entire candidate pool, returning a ranked list of the top 10 matches. Each match includes a score from 0 to 100 and a written explanation of why the candidate fits.
+
+**What the AI evaluates:**
+- **Availability** — Is the candidate free during the shoot dates?
+- **Location** — Are they near the production or willing to travel?
+- **Experience** — How many past projects and endorsements do they have?
+- **Endorsements** — What do past collaborators say about their work?
+- **Bio relevance** — Does their described experience align with what the production needs?
+
+**Example output:** "Marcus Johnson — 95% match. Based in Atlanta, available March through May, 14 past projects, 8 endorsements from DPs. His bio mentions extensive experience with LED lighting on indie features, which aligns with this production's format."
+
+---
+
+### 9.2 Natural Language Search
+
+> **Status:** BUILT AND FUNCTIONAL | **Backend API:** `/api/ai/natural-search` | **AI Provider:** Anthropic Claude (`claude-sonnet-4-20250514`) | **Subscription:** Anthropic standard API pricing (pay-per-use, cost absorbed by platform) | **Tier:** Free tier deployed
+
+Users type queries in plain English — like **"Looking for a DP in LA available in June"** — and the AI parses the sentence into structured database filters: role, department, location, dates, level, keywords, and intent.
+
+**What the AI extracts:**
+- **Role** — maps informal terms ("camera guy") to the correct taxonomy role (Camera Operator)
+- **Department** — infers the department group from context
+- **Location** — resolves city names, abbreviations, and regions
+- **Dates** — parses availability windows from natural phrasing
+- **Level** — detects experience tier references (HOD, senior, entry-level)
+- **Keywords** — captures genre, specialty, and skill references
+- **Intent** — determines if the user is hiring, browsing, or looking for a specific person
+
+This makes the Discover page feel like talking to an assistant rather than filling out a form.
+
+---
+
+### 9.3 Auto-Categorization — Intelligent Profile Tagging
+
+> **Status:** BUILT AND FUNCTIONAL | **Backend API:** `/api/ai/categorize` | **AI Provider:** Anthropic Claude (`claude-sonnet-4-20250514`) | **Subscription:** Anthropic standard API pricing (pay-per-use, cost absorbed by platform) | **Tier:** Free tier deployed
+
+When a member writes or updates their bio, the AI reads it and automatically extracts structured metadata:
+
+- **Skills** — LED lighting, DMX programming, Steadicam operation, etc.
+- **Genres** — horror, thriller, documentary, commercial, etc.
+- **Tools** — ARRI SkyPanel, RED Komodo, DaVinci Resolve, etc.
+- **Specialties** — atmospheric lighting, underwater cinematography, etc.
+- **Experience indicators** — years of experience, project volume, career stage
+
+These are saved as searchable profile tags, making every member's profile automatically more discoverable — even when searchers use different terminology than what appears in the bio.
+
+---
+
+### 9.4 Crew Recommendations — Network-Aware Matching
+
+> **Status:** BUILT AND FUNCTIONAL | **Backend API:** `/api/ai/crew-recommendations` | **AI Provider:** Anthropic Claude (`claude-sonnet-4-20250514`) | **Subscription:** Anthropic standard API pricing (pay-per-use, cost absorbed by platform) | **Tier:** Free tier deployed
+
+When a project has open requisitions, the AI analyzes the hiring manager's **worked-with network** — every person they have collaborated with on past projects — and recommends specific people for each open role.
+
+**Prioritization criteria:**
+- Role match — the contact's role directly matches the open position
+- Endorsement strength — more endorsements indicate higher trust and reliability
+- Direct collaboration history — people you have personally worked with carry lower hiring risk
+- Recency — recent collaborators are weighted higher
+
+This mirrors how the industry actually works: people hire people they know. The AI makes that process instant instead of requiring phone calls and mental Rolodexes.
+
+---
+
+### 9.5 Role Suggestions — Onboarding Intelligence
+
+> **Status:** BUILT AND FUNCTIONAL | **Backend API:** `/api/ai/role-suggestions` | **AI Provider:** Anthropic Claude (`claude-sonnet-4-20250514`) | **Subscription:** Anthropic standard API pricing (pay-per-use, cost absorbed by platform) | **Tier:** Free tier deployed
+
+During onboarding, new members can describe what they do in their own words — like **"I work in camera departments, mostly pulling focus and operating on commercials, but I also do some DIT work on smaller shoots"** — and the AI suggests the top 3-5 matching roles from the 40+ role taxonomy.
+
+Each suggestion includes a confidence level (high, medium, low) and a brief explanation of why that role fits. This removes the friction of navigating 43 roles across 9 departments, especially for people earlier in their careers who may not know the formal industry terminology.
+
+---
+
+### How the AI Connects to the Platform
+
+The AI is not a bolt-on feature. It is woven into existing workflows:
+
+| Platform Surface | AI Feature | What It Does |
+|-----------------|-----------|-------------|
+| **Discover page** | Natural Language Search | Type instead of clicking filters |
+| **Requisition detail page** | Smart Match | "Find Best Matches" button ranks candidates |
+| **Project dashboard** | Crew Recommendations | "Recommended Crew" section from your network |
+| **Profile edit page** | Auto-Categorization | "Auto-tag my profile" extracts skills from bio |
+| **Onboarding wizard** | Role Suggestions | "Describe what you do" suggests matching roles |
+
+---
+
+## 10. User Journeys
 
 ### Journey 1: Actor Looking for Work
 
@@ -547,7 +703,7 @@ Documents have confidentiality levels: Public, Project Members, Restricted, Top 
 
 ---
 
-## 10. Payment System
+## 11. Payment System
 
 ### Two-Lane Architecture
 
@@ -598,7 +754,7 @@ This is significantly more complex due to employment law, tax withholding, union
 
 ---
 
-## 11. Trust & Reputation System
+## 12. Trust & Reputation System
 
 ### The Problem with Self-Reported Resumes
 
@@ -627,17 +783,18 @@ After working together, professionals can endorse each other. Endorsements are:
 
 Every project assignment creates a credit on the professional's profile. Over time, this builds an **IMDb-like credit history** that's verified by the hiring chain, not self-reported.
 
-**The Network Effect**
+**The Network Effect** ✦ AI-Enhanced — network-aware crew suggestions powered by Claude
 
 As more productions run through FrameOne:
 - More worked-with edges are created
 - Search results can be ranked by "degrees of connection" to the searcher
 - A Producer can see: "This Gaffer was endorsed by my DP from last project" — instant trust signal
+- AI analyzes your worked-with network and recommends past collaborators for open positions
 - The platform becomes more valuable as more people use it (classic network effect)
 
 ---
 
-## 12. Technical Architecture Overview
+## 13. Technical Architecture Overview
 
 ### Tech Stack (for non-engineers)
 
@@ -648,6 +805,7 @@ As more productions run through FrameOne:
 | **Database** | PostgreSQL | Stores all data — users, roles, projects, applications, payments, etc. |
 | **Authentication** | NextAuth | Manages login sessions. Encrypts passwords. Handles "remember me." |
 | **Payments** | Stripe Connect | Processes vendor payouts. Handles bank account connections. |
+| **AI Layer** | Anthropic Claude | Powers Smart Match, natural language search, auto-categorization, crew recommendations, and role suggestions. |
 | **Styling** | Tailwind CSS | Makes everything look good. Dark theme with indigo/gold brand colors. |
 | **Validation** | Zod | Checks that data is correct before saving. Prevents invalid inputs. |
 | **Language** | TypeScript | JavaScript with type safety. Catches bugs before they reach users. |
@@ -675,7 +833,7 @@ Ralph's original site was built with Laravel (PHP). Here's why we moved to Next.
 
 ---
 
-## 13. Site Map & Page Structure
+## 14. Site Map & Page Structure
 
 ### Public Pages (No Login Required)
 
@@ -710,7 +868,7 @@ Ralph's original site was built with Laravel (PHP). Here's why we moved to Next.
 
 ---
 
-## 14. API Endpoints
+## 15. API Endpoints
 
 The backend exposes 24 API endpoints that handle all data operations:
 
@@ -776,7 +934,7 @@ The backend exposes 24 API endpoints that handle all data operations:
 
 ---
 
-## 15. Database Structure
+## 16. Database Structure
 
 The platform stores data in **25 interconnected tables** across 7 domains:
 
@@ -826,7 +984,7 @@ SYSTEM
 
 ---
 
-## 16. Security & Privacy
+## 17. Security & Privacy
 
 ### Authentication
 - Passwords are hashed with **bcrypt** (12 rounds) — even if the database is breached, passwords cannot be recovered
@@ -862,7 +1020,7 @@ SYSTEM
 
 ---
 
-## 17. Development Roadmap
+## 18. Development Roadmap
 
 ### Phase 1: MVP (Current — What's Built)
 
@@ -882,10 +1040,11 @@ SYSTEM
 - Vendor invoice/payout system (Stripe Connect)
 - Document vault with confidentiality levels
 - Audit event logging
+- AI intelligence layer: Smart Match, Natural Language Search, Auto-Categorization, Crew Recommendations, Role Suggestions
 - Landing page, dashboard, discover, projects pages
 - Dark theme with indigo/gold brand
 
-### Phase 2: Sticky Features (Next 2-3 months)
+### Phase 2: Sticky Features & Power Tools (Next 2-3 months)
 
 - **Call sheet creation and distribution** — AD and coordinator tools
 - **E-signatures** — sign contracts and deal memos in-platform
@@ -894,6 +1053,20 @@ SYSTEM
 - **Analytics dashboard** — time-to-fill, rehire rates, offer acceptance
 - **Mobile optimization** — responsive improvements for on-set use
 - **Department scheduling** — visual calendar per department per project
+- **Self-Tape & Audition Management System** — built-in self-tape submission, review, and feedback tools
+- **Saved Searches with Smart Alerts** — instant, daily, or weekly digest notifications when new matches appear
+- **Collaborator Permissions** — granular sharing (full access vs shortlist-only) for team-based hiring
+- **Bulk Actions** — message, shortlist, or reject multiple candidates at once
+- **Applicant Pipeline Kanban** — visual pipeline: To Review → Shortlisted → Audition → Offer → Hired → Passed
+- **Pre-Screen Questionnaires** — custom questions per requisition, answered before full application
+- **Geographic Radius Search** — distance-based filtering, not just city match
+- **Content Creator Profiles** — UGC, branded content, and package pricing for the creator economy
+- **Listing Boost / Featured Placement** — paid visibility for profiles and requisitions
+- **Calendar Integration** — Google Calendar / iCal sync for availability and audition scheduling
+- **Physical Attributes & Voice Filters** — height, hair color, eye color, voice type, accent (for casting)
+- **Script Sides & Document Sharing** — attach scripts and sides directly to casting breakdowns
+- **Native Portfolio & Reel Hosting** — built-in video player, no external links required
+- **Exportable Shortlists** — PDF/CSV export for offline sharing with directors and producers
 
 ### Phase 3: Scale & Compliance (3-6 months)
 
@@ -904,17 +1077,22 @@ SYSTEM
 - **Advanced search** — Elasticsearch with faceted filtering
 - **API access** — public API for agency/studio integrations
 
-### Phase 4: Intelligence (6-12 months)
+### Phase 4: Advanced Intelligence (6-12 months)
 
-- **AI-powered matching** — recommend crew based on worked-with graph and preferences
+> **Note:** Core AI features (Smart Match, Natural Language Search, Auto-Categorization, Crew Recommendations, Role Suggestions) are already built and deployed. Phase 4 extends the intelligence layer with deeper capabilities.
+
 - **Predictive availability** — forecast who will be free based on project timelines
 - **Market rate intelligence** — anonymous rate benchmarking by role and region
 - **Production planning AI** — suggest department staffing based on script breakdown
+- **Script breakdown AI** — upload a screenplay and AI suggests departments, roles, and headcount
+- **Schedule optimization** — AI suggests optimal shooting schedules based on crew availability and location constraints
+- **Career path AI** — personalized growth recommendations based on role, experience, and industry trajectories
+- **Portfolio matching** — AI embeddings to find professionals with similar styles even when described differently
 - **Mobile app** — native iOS/Android for on-set use
 
 ---
 
-## 18. Access & Login Information
+## 19. Access & Login Information
 
 ### GitHub Repository
 
@@ -968,7 +1146,7 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"
 
 ---
 
-## 19. How to Deploy & Run
+## 20. How to Deploy & Run
 
 ### Local Development
 
@@ -1023,7 +1201,7 @@ npm run db:reset
 
 ---
 
-## 20. Competitive Landscape
+## 21. Competitive Landscape
 
 | Platform | What It Does | Limitation vs FrameOne |
 |----------|-------------|----------------------|
@@ -1035,13 +1213,15 @@ npm run db:reset
 | **IMDbPro** | Credits database + contacts | View-only credits. No hiring flow, no project management. |
 | **FrameOne** | **Full ecosystem** | **All roles. Hiring flow. Casting. Payments. Trust network. Project management.** |
 
-### Our Unfair Advantage
+### Our Unfair Advantages
 
-**The worked-with graph.** Every platform above is a directory or a job board. FrameOne builds a verifiable trust network that gets more valuable with every production. After 1,000 projects run through the platform, FrameOne will have a dataset of real industry relationships that no competitor can replicate.
+**1. The worked-with graph.** Every platform above is a directory or a job board. FrameOne builds a verifiable trust network that gets more valuable with every production. After 1,000 projects run through the platform, FrameOne will have a dataset of real industry relationships that no competitor can replicate.
+
+**2. Production-aware AI.** No existing platform in this space offers AI-powered matching, natural language search, or intelligent crew recommendations. FrameOne is first to market with production-aware AI. While other platforms require manual filtering through dropdown menus and keyword searches, FrameOne's embedded intelligence layer — powered by Anthropic's Claude — understands roles, departments, availability, and professional networks. The AI is not a future feature: it is built, functional, and deployed today across five core platform surfaces.
 
 ---
 
-## 21. Revenue Projections
+## 22. Revenue Projections
 
 ### Conservative Model (Year 1)
 
@@ -1069,7 +1249,7 @@ npm run db:reset
 
 ---
 
-## 22. AI Integration
+## 23. AI Integration (Technical Detail)
 
 FrameOne integrates Claude AI (by Anthropic) directly into the platform. The AI handles five core functions: matching talent to jobs, understanding natural language searches, automatically categorizing member profiles, recommending crew from your network, and suggesting roles during signup. All of these work together to make the platform smarter than any job board or directory.
 

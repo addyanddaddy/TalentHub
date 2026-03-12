@@ -9,10 +9,10 @@ export function Card({ className, variant = "default", ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-xl border bg-navy-700/50 backdrop-blur-sm",
-        variant === "default" && "border-navy-600/50",
-        variant === "interactive" && "border-navy-600/50 hover:border-navy-500 hover:bg-navy-700/80 cursor-pointer transition-all duration-200",
-        variant === "selected" && "border-accent bg-accent/10 ring-1 ring-accent/20",
+        "rounded-2xl bg-navy-800",
+        variant === "default" && "",
+        variant === "interactive" && "hover:bg-navy-700 cursor-pointer transition-colors duration-200",
+        variant === "selected" && "border border-bronze/40 bg-bronze/[0.06] ring-1 ring-bronze/20",
         className
       )}
       {...props}
@@ -25,11 +25,11 @@ export function CardHeader({ className, ...props }: HTMLAttributes<HTMLDivElemen
 }
 
 export function CardTitle({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
-  return <h3 className={cn("text-lg font-semibold text-white", className)} {...props} />;
+  return <h3 className={cn("text-lg font-semibold text-marble", className)} {...props} />;
 }
 
 export function CardDescription({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
-  return <p className={cn("text-sm text-navy-200", className)} {...props} />;
+  return <p className={cn("text-sm text-secondary", className)} {...props} />;
 }
 
 export function CardContent({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
