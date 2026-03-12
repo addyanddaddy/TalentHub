@@ -191,29 +191,8 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="space-y-8">
-      {/* Stagger animation wrapper */}
-      <style jsx>{`
-        .stagger-children > * {
-          opacity: 0;
-          transform: translateY(12px);
-          animation: staggerIn 0.45s ease-out forwards;
-        }
-        .stagger-children > *:nth-child(1) { animation-delay: 0.04s; }
-        .stagger-children > *:nth-child(2) { animation-delay: 0.08s; }
-        .stagger-children > *:nth-child(3) { animation-delay: 0.12s; }
-        .stagger-children > *:nth-child(4) { animation-delay: 0.16s; }
-        .stagger-children > *:nth-child(5) { animation-delay: 0.20s; }
-        .stagger-children > *:nth-child(6) { animation-delay: 0.24s; }
-        @keyframes staggerIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
-
       {/* ── KPI Row ── */}
-      <div className="stagger-children grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 animate-fade-in">
         {loading
           ? Array.from({ length: 4 }).map((_, i) => <KpiSkeleton key={i} />)
           : stats?.kpis.map((kpi, i) => {
@@ -244,7 +223,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* ── Row 2: Activity + Alerts ── */}
-      <div className="stagger-children grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="animate-fade-ingrid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* Recent Activity */}
         <div className="rounded-2xl bg-[#1f1f2a] border border-white/[0.04] overflow-hidden">
           <div className="flex items-center gap-2 px-6 py-4 border-b border-white/[0.06]">
@@ -318,7 +297,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* ── Row 3: AI Usage + User Growth ── */}
-      <div className="stagger-children grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="animate-fade-ingrid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* AI Usage */}
         <div className="rounded-2xl bg-[#1f1f2a] border border-white/[0.04] overflow-hidden">
           <div className="flex items-center gap-2 px-6 py-4 border-b border-white/[0.06]">
@@ -419,7 +398,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* ── Row 4: Recent Users Table ── */}
-      <div className="stagger-children">
+      <div className="animate-fade-in">
         <div className="rounded-2xl bg-[#1f1f2a] border border-white/[0.04] overflow-hidden">
           <div className="flex items-center gap-2 px-6 py-4 border-b border-white/[0.06]">
             <UsersIcon className="h-4 w-4 text-[#9e9eab]" />
